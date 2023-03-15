@@ -43,20 +43,18 @@ export default class Iphone extends Component {
 		return (
 			<div class={ style.container }> 
 				<div class={style.headerbar}> 
-					<h1>Weather</h1> {/* change text based on current page */}
+					<h1>Crops</h1> {/* change text based on current page */}
 				</div>
 				{/* weather box */}
-				<div class={style.bluebox} flex-container>
+				<div class={style.weatherbox} flex-container>
 					<h2>current date and time</h2>
 					<div class={style.innerbox}>
 						<img class = {style.weathericon} src="\assets\icons\cloudy.png" ></img>
 						<p class={style.innerboxtext}>weather info goes here</p>
-						{/* <span class={ tempStyles }>{ this.state.temp }</span>
-						<div class={ style.conditions }>{ this.state.cond }</div> */}
 					</div>
 				</div>
 				{/* alert box */}
-				<div class={style.redbox} flex-container>
+				<div class={style.weatherbox} flex-container style="background-color:red;">
 					<h2>! Alert</h2>
 					<div class={style.innerbox}>
 						<p class={style.innerboxtext}>Heavy rain incoming</p>
@@ -64,7 +62,7 @@ export default class Iphone extends Component {
 				</div>
 
 				{/* tasks box */}
-				<div class={style.greenbox} flex-container>
+				<div class={style.weatherbox} flex-container style="background-color:green;">
 					<h2>Tasks</h2>
 					<div class={style.innerbox}>
 						<p class={style.innerboxtext}>Field 3 ready to harvest</p>
@@ -72,7 +70,7 @@ export default class Iphone extends Component {
 				</div>
 
 				{/* weekly overview box */}
-				<div class={style.greybox} flex-container >
+				<div class={style.weatherbox} flex-container style="background-color:grey;">
 					<h2>Weekly overview</h2>
 					<div class={style.innerbox}>
 						<p class={style.innerboxtext}>graph goes here</p>
@@ -82,12 +80,9 @@ export default class Iphone extends Component {
 				{/* nav bar */}
 				<div class={style.navbar} flex-container>
 					<ul>
-						<li><a href="crops.js" >crops</a></li>
+						<li><a>crops</a></li>
 						<li><a>to do</a></li>
-						<li>
-							{/* <img href='\assets\icons\cloudy.png' style="width:40px;"></img> */}
-							<a class="active">Weather</a>
-						</li>
+						<li><a class="active">weather</a></li>
 						<li><a>trends</a></li>
 						<li><a>calendar</a></li>
 					</ul>

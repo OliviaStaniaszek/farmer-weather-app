@@ -1,17 +1,109 @@
 @import '~style/helpers';
 
 .container { 
-	display: flex;
-	flex-direction: column;
-	background-image: url('../../assets/backgrounds/clear-iphone.jpg');
-	color: #fff;
+	display: flex;  // see https://www.w3schools.com/css/css3_flexbox.asp
+	flex-direction: column; //stacks elements vertically
+	// background-image: url('../../assets/backgrounds/clear-iphone.jpg');
+	background-color: white;
 	width: 414px;
 	height: 736px;
-	text-align: center;
-	padding-top: 80px;
+	// text-align: center;
 	margin: 0 auto;
 }
+
+.headerbar{
+	border: lightgray 1pt solid;
+	margin: 0;
+	width: 100%;
+	
+}
+
+.innerbox{
+	background-color: white;
+	padding: 2%;
+	
+}
+.innerboxtext{
+	display:inline;
+	text-align: left;
+	
+}
+// navbar
+	.navbar{
+		display: block;
+		background-color: white;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		
+	}
+	.navbar ul{
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		border: 1px solid #e7e7e7;
+		background-color: white;
+	}
+
+	.navbar ul li {
+		float: left;
+	}
+
+	.navbar li a {
+		display: block;
+		color: black;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+
+	// .navbar ul li a:hover:not(.active) {
+	// background-color: #ddd;
+	// }
+	
+	.navbar ul li a.active {
+	color: white;
+	background-color: #04AA6D;
+	}
+
+// weather box
+	.weathericon{
+		width:80px;
+		display: inline;
+		// float: left;
+		margin: 2%;
+		vertical-align: text-top;
+	}
+
+// colour boxes
+	.bluebox{
+		background-color: @blue;
+		margin: 2%;
+		flex-direction: row;
+		padding: 3%;
+	}
+	.redbox{
+		background-color: @red;
+		margin: 2%;
+		flex-direction: row;
+		padding: 3%;
+	}
+	.greenbox{
+		background-color: @green;
+		margin: 2%;
+		flex-direction: row;
+		padding: 3%;
+	}
+	.greybox{
+		background-color: @grey;
+		margin: 2%;
+		flex-direction: row;
+		padding: 3%;
+	}
+
 .header {
+	color: rgb(89, 179, 209);
 	display: flex;
 	flex-direction: column;
 	flex: 1;
@@ -43,4 +135,21 @@
 	display: inline-block;
 	padding-top: 10px;
 	vertical-align: top;
+}
+
+h1{
+	color: black;
+	text-align: center;
+}
+h2{
+	color:white;
+	text-align: left;
+	font-size: 20px;
+	display: block;
+	padding-bottom: 1%;
+	margin: 0;
+}
+p{
+	color: black;
+	text-align: left;
 }
