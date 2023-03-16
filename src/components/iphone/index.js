@@ -41,8 +41,66 @@ export default class Iphone extends Component {
 		
 		// display all weather data
 		return (
+<<<<<<< Updated upstream
 			<div class={ style.container }>
 				<div class={ style.header }>
+=======
+			<div class={ style.container }> 
+				<div class={style.headerbar}> 
+					<h1>Weather</h1> {/* change text based on current page */}
+				</div>
+				{/* weather box */}
+				<div class={style.bluebox} flex-container>
+					<h2>current date and time</h2>
+					<div class={style.innerbox}>
+						<img class = {style.weathericon} src="\assets\icons\cloudy.png" ></img>
+						<p class={style.innerboxtext}>weather info goes here</p>
+						{/* <span class={ tempStyles }>{ this.state.temp }</span>
+						<div class={ style.conditions }>{ this.state.cond }</div> */}
+					</div>
+				</div>
+				{/* alert box */}
+				<div class={style.redbox} flex-container>
+					<h2>! Alert</h2>
+					<div class={style.innerbox}>
+						<p class={style.innerboxtext}>Heavy rain incoming</p>
+					</div>
+				</div>
+
+				{/* tasks box */}
+				<div class={style.greenbox} flex-container>
+					<h2>Tasks</h2>
+					<div class={style.innerbox}>
+						<p class={style.innerboxtext}>Field 3 ready to harvest</p>
+					</div>
+				</div>
+
+				{/* weekly overview box */}
+				<div class={style.greybox} flex-container >
+					<h2>Weekly overview</h2>
+					<div class={style.innerbox}>
+						<p class={style.innerboxtext}>graph goes here</p>
+					</div>
+				</div>
+
+				{/* nav bar */}
+				<div class={style.navbar} flex-container>
+					<ul>
+						{/* will link to different pages */}
+						<li><a href="crops.js" >crops</a></li>
+						<li><a>to do</a></li>
+						<li>
+							{/* <img href='\assets\icons\cloudy.png' style="width:40px;"></img> */}
+							<a class="active">Weather</a>
+						</li>
+						<li><a>trends</a></li>
+						<li><a>calendar</a></li>
+					</ul>
+				</div>
+
+				{/* display weather button */}
+				<div class={ style.header }> 
+>>>>>>> Stashed changes
 					<div class={ style.city }>{ this.state.locate }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
 					<span class={ tempStyles }>{ this.state.temp }</span>
