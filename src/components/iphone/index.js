@@ -51,10 +51,14 @@ export default class Iphone extends Component {
 		const daySuffix = suffixes[(dayOfMonth-20)%10] || suffixes[dayOfMonth] || suffixes[0];
 		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName} ${year}`;
 
-		const hours = currentDate.getHours() % 12 || 12;
+		const hours = currentDate.getHours();
 		const minutes = currentDate.getMinutes();
-		const meridian = currentDate.getHours() >= 12 ? 'p.m.' : 'a.m.';
-		const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${meridian}`;
+		const formattedTime = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+
+		// const hours = currentDate.getHours() % 12 || 12;
+		// const minutes = currentDate.getMinutes();
+		// const meridian = currentDate.getHours() >= 12 ? 'p.m.' : 'a.m.';
+		// const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${meridian}`;
 
 		
 		// display all weather data
