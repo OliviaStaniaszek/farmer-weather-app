@@ -50,6 +50,12 @@ export default class Iphone extends Component {
 		const suffixes = ['th', 'st', 'nd', 'rd'];
 		const daySuffix = suffixes[(dayOfMonth-20)%10] || suffixes[dayOfMonth] || suffixes[0];
 		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName} ${year}`;
+
+		const hours = currentDate.getHours() % 12 || 12;
+		const minutes = currentDate.getMinutes();
+		const meridian = currentDate.getHours() >= 12 ? 'p.m.' : 'a.m.';
+		const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${meridian}`;
+
 		
 		// display all weather data
 		return (
@@ -62,6 +68,7 @@ export default class Iphone extends Component {
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedDate}</h2>
+					<h2>{formattedTime}</h2>
 					{/* <h2>current date and time</h2> */}
 					<div class={style.innerbox}>
 						<img class = {style.weathericon} src="\assets\icons\cloudy.png" ></img>
