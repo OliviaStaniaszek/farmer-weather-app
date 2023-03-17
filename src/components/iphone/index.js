@@ -41,10 +41,8 @@ export default class Iphone extends Component {
 		
 		// display all weather data
 		return (
-<<<<<<< Updated upstream
-			<div class={ style.container }>
-				<div class={ style.header }>
-=======
+			// <div class={ style.container }>
+			// 	<div class={ style.header }>
 			<div class={ style.container }> 
 				<div class={style.headerbar}> 
 					<h1>Weather</h1> {/* change text based on current page */}
@@ -100,7 +98,6 @@ export default class Iphone extends Component {
 
 				{/* display weather button */}
 				<div class={ style.header }> 
->>>>>>> Stashed changes
 					<div class={ style.city }>{ this.state.locate }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
 					<span class={ tempStyles }>{ this.state.temp }</span>
