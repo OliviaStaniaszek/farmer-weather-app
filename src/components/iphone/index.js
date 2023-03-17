@@ -34,6 +34,26 @@ export default class Iphone extends Component {
 		this.setState({ display: false });
 	}
 
+	App() {
+		const currentDate = new Date();
+		const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		const dayOfWeek = daysOfWeek[currentDate.getDay()];
+		const dayOfMonth = currentDate.getDate();
+		const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		const monthName = monthNames[currentDate.getMonth()];
+		const year = currentDate.getFullYear();
+		const suffixes = ['th', 'st', 'nd', 'rd'];
+		const daySuffix = suffixes[(dayOfMonth-20)%10] || suffixes[dayOfMonth] || suffixes[0];
+		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName} ${year}`;
+	  
+		return (
+		  <div>
+			<h2>Current Date:</h2>
+			<p>{formattedDate}</p>
+		  </div>
+		);
+	}
+
 	// the main render method for the iphone component
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
@@ -49,7 +69,8 @@ export default class Iphone extends Component {
 				</div>
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
-					<h2>current date and time</h2>
+					render(<App />, document.body);
+					{/* <h2>current date and time</h2> */}
 					<div class={style.innerbox}>
 						<img class = {style.weathericon} src="\assets\icons\cloudy.png" ></img>
 						<p class={style.innerboxtext}>weather info goes here</p>
