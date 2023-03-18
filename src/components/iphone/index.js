@@ -53,10 +53,10 @@ export default class Iphone extends Component {
 		const dayOfMonth = currentDate.getDate();
 		const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		const monthName = monthNames[currentDate.getMonth()];
-		const year = currentDate.getFullYear();
+		//const year = currentDate.getFullYear();
 		const suffixes = ['th', 'st', 'nd', 'rd'];
 		const daySuffix = suffixes[(dayOfMonth-20)%10] || suffixes[dayOfMonth] || suffixes[0];
-		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName} ${year}`;
+		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName}`;
 
 		//This sets 24hr time
 		const hours = currentDate.getHours();
@@ -79,13 +79,14 @@ export default class Iphone extends Component {
 			<div class={ style.container }> 
 				<div class={style.headerbar}> 
 					<h1>Farm 39</h1> {/* change text based on current page */}
-					<img src="\assets\icons\farm-logo.jpg" height="50" style="max-width: 50px; position:relative; left: 350px; top:-60px"/>
-					<img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-110px"/>
+					{/* Farm logo */}
+					<img src="\assets\icons\farm-logo.jpg" height="70" style="max-width: 65px; position:relative; left: 340px; top:-70px"/>
+					{/* Bar lines */}
+					<img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-130px"/>
 				</div>
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
-					<h2>{formattedDate}</h2> {/* current date*/}
-					<h2>{formattedTime}</h2> {/* current time */}
+					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
 						<img class = {style.weathericon} src="\assets\icons\cloudy.png" ></img>
 						
@@ -120,17 +121,17 @@ export default class Iphone extends Component {
 
 				{/* nav bar */}
 				<div class={style.navbar} flex-container>
-					<ul>
-						{/* will link to different pages */}
-						<li><a href="crops.js" >crops</a></li>
-						<li><a>to do</a></li>
-						<li>
-							{/* <img href='\assets\icons\cloudy.png' style="width:40px;"></img> */}
-							<a class="active">Weather</a>
-						</li>
-						<li><a>trends</a></li>
-						<li><a>calendar</a></li>
-					</ul>
+				{/* Crops icon */}
+				<img src="\assets\icons\crops.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
+				{/* To do list icon */}
+				<img src="\assets\icons\to-do-list.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
+				{/* Weather icon */}
+				<img src="\assets\icons\weather.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
+				{/* Trends icon */}
+				<img src="\assets\icons\trends.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
+				{/* Calendar icon */}
+				<img src="\assets\icons\calendar.png" height="100" style="max-width: 100px; position:relative; left: 165px; top: -50px"/>
+
 				</div>
 
 				{/* display weather button */}
