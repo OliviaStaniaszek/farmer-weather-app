@@ -22,8 +22,14 @@ export default class Iphone extends Component {
 
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
+		//url Sanchia got
+		// http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=cb932829eacb6a0e9ee4f38bfbf112ed
+
+		// Previous url Jane gave
+		//http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5
+
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
-		var url = "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5";
+		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=cb932829eacb6a0e9ee4f38bfbf112ed";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
@@ -40,6 +46,7 @@ export default class Iphone extends Component {
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 
+		//This sets the date
 		const currentDate = new Date();
 		const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		const dayOfWeek = daysOfWeek[currentDate.getDay()];
@@ -51,14 +58,18 @@ export default class Iphone extends Component {
 		const daySuffix = suffixes[(dayOfMonth-20)%10] || suffixes[dayOfMonth] || suffixes[0];
 		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName} ${year}`;
 
+		//This sets 24hr time
 		const hours = currentDate.getHours();
 		const minutes = currentDate.getMinutes();
 		const formattedTime = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 
+		//This sets 12 hour time
 		// const hours = currentDate.getHours() % 12 || 12;
 		// const minutes = currentDate.getMinutes();
 		// const meridian = currentDate.getHours() >= 12 ? 'p.m.' : 'a.m.';
 		// const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${meridian}`;
+
+		//const temp = data.main.temp;
 
 		
 		// display all weather data
@@ -67,16 +78,18 @@ export default class Iphone extends Component {
 			// 	<div class={ style.header }>
 			<div class={ style.container }> 
 				<div class={style.headerbar}> 
-					<h1>Weather</h1> {/* change text based on current page */}
+					<h1>Farm 39</h1> {/* change text based on current page */}
+					<img src="\assets\icons\farm-logo.jpg" height="50" style="max-width: 50px; position:relative; left: 350px; top:-60px"/>
+					<img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-110px"/>
 				</div>
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
-					<h2>{formattedDate}</h2>
-					<h2>{formattedTime}</h2>
-					{/* <h2>current date and time</h2> */}
+					<h2>{formattedDate}</h2> {/* current date*/}
+					<h2>{formattedTime}</h2> {/* current time */}
 					<div class={style.innerbox}>
 						<img class = {style.weathericon} src="\assets\icons\cloudy.png" ></img>
-						<p class={style.innerboxtext}>weather info goes here</p>
+						
+						<p class={style.innerboxtext}>°C</p>
 						{/* <span class={ tempStyles }>{ this.state.temp }</span>
 						<div class={ style.conditions }>{ this.state.cond }</div> */}
 					</div>
