@@ -8,6 +8,7 @@ import $ from 'jquery';
 // import the Button component
 import Button from '../button';
 
+
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
 
@@ -22,14 +23,17 @@ export default class Iphone extends Component {
 
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
-		//url Sanchia got
+		//url Sanchia got 1st attemp online
 		// http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=cb932829eacb6a0e9ee4f38bfbf112ed
+
+		//url Sanchia got after creating an account, gives more accurate weather
+		//http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
 
 		// Previous url Jane gave
 		//http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5
 
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
-		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=cb932829eacb6a0e9ee4f38bfbf112ed";
+		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
@@ -150,7 +154,7 @@ export default class Iphone extends Component {
 							</a>
 							</li>
                         <li>
-							<a href="./components/iphone/calendar.js" >
+							<a href=  "./components/iphone/calendar/index.js" >
 								<img class={style.navbarimg} src='\assets\icons\calendar outline.png'></img>
 								<a>calendar</a>
 							</a>
