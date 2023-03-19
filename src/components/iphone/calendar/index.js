@@ -8,6 +8,7 @@ import $ from 'jquery';
 // import the Button component
 import Button from '../button';
 
+
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
 
@@ -150,7 +151,7 @@ export default class Iphone extends Component {
 							</a>
 							</li>
                         <li>
-							<a href="https://www.google.com/" >
+							<a href=  "" >
 								<img class={style.navbarimg} src='\assets\icons\calendar outline.png'></img>
 								<a>calendar</a>
 							</a>

@@ -102,6 +102,9 @@ export default class Iphone extends Component {
 						{/* <div class={style.innerboxtext}> */}
 							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
 							<div class={ style.conditions }>{ this.state.cond }</div>
+							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
+							<div class={ style.wind }>wind: { this.state.win }mph</div>
+							
 							{/* <p>°C</p> */}
 						{/* </div> */}
 						
@@ -126,10 +129,9 @@ export default class Iphone extends Component {
 				{/* weekly overview box */}
 				<div class={style.greybox} flex-container >
 					<h2>Weekly overview</h2>
-					<div class={style.innerbox}>
-						<img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -18px; top:-14px"></img>
+					
+					<img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img>
 
-					</div>
 				</div>
 
 				<div class={style.navbar} flex-container>
@@ -188,12 +190,16 @@ export default class Iphone extends Component {
 		var location = parsed_json['name'];
 		var temp_c = parsed_json['main']['temp'];
 		var conditions = parsed_json['weather']['0']['description'];
+		var humidity = parsed_json['main']['humidity'];
+		var wind = parsed_json['wind']['speed'];
 
 		// set states for fields so they could be rendered later on
 		this.setState({
 			locate: location,
 			temp: temp_c,
-			cond : conditions
+			cond : conditions,
+			hum: humidity,
+			win: wind
 		});      
 	}
 }
