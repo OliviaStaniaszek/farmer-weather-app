@@ -46,7 +46,8 @@ export default class Iphone extends Component {
 
 
 	// the main render method for the iphone component
-
+	
+	//displays weather data
 	componentWillMount() {
 		this.fetchWeatherData ();
 	}
@@ -126,7 +127,8 @@ export default class Iphone extends Component {
 				<div class={style.greybox} flex-container >
 					<h2>Weekly overview</h2>
 					<div class={style.innerbox}>
-						<p class={style.innerboxtext}>graph goes here</p>
+						<img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -18px; top:-14px"></img>
+
 					</div>
 				</div>
 
