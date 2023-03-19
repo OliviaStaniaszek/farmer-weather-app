@@ -80,19 +80,21 @@ export default class Iphone extends Component {
 				<div class={style.headerbar}> 
 					<h1>Farm 39</h1> {/* change text based on current page */}
 					{/* Farm logo */}
-					<img src="\assets\icons\farm-logo.jpg" height="70" style="max-width: 65px; position:relative; left: 340px; top:-70px"/>
+					<img src="\assets\icons\farm house outline.png" height="50" style="max-width: 65px; position:relative; left: 330px; top:-45px"/>
 					{/* Bar lines */}
-					<img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-130px"/>
+					{/* <img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-130px"/> */}
 				</div>
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
-						<img class = {style.weathericon} src="\assets\icons\cloudy.png" ></img>
+						<img class = {style.weathericon} src="\assets\icons\partly cloudy coloured.png" ></img>
+						{/* <div class={style.innerboxtext}> */}
+							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
+							<div class={ style.conditions }>{ this.state.cond }</div>
+							{/* <p>°C</p> */}
+						{/* </div> */}
 						
-						<p class={style.innerboxtext}>°C</p>
-						{/* <span class={ tempStyles }>{ this.state.temp }</span>
-						<div class={ style.conditions }>{ this.state.cond }</div> */}
 					</div>
 				</div>
 				{/* alert box */}
@@ -119,32 +121,42 @@ export default class Iphone extends Component {
 					</div>
 				</div>
 
-				{/* nav bar */}
 				<div class={style.navbar} flex-container>
-				{/* Crops icon */}
-				<img src="\assets\icons\crops.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
-				{/* To do list icon */}
-				<img src="\assets\icons\to-do-list.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
-				{/* Weather icon */}
-				<img src="\assets\icons\weather.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
-				{/* Trends icon */}
-				<img src="\assets\icons\trends.png" height="80" style="max-width: 80px; position:relative; left: -45px; top: 40px"/>
-				{/* Calendar icon */}
-				<img src="\assets\icons\calendar.png" height="100" style="max-width: 100px; position:relative; left: 165px; top: -50px"/>
-
-				</div>
+                    <ul>
+                        {/* will link to different pages */}
+                        <li>
+							<img class={style.navbarimg} src='\assets\icons\crops outline.png'></img>
+							<a href="crops.js" >crops</a>
+							</li>
+                        <li>
+							<img class={style.navbarimg} src='\assets\icons\todo outline.png'></img>
+							<a>to do</a>
+							</li>
+                        <li>
+							<img class={style.navbarimg} src='\assets\icons\weather outline.png'></img>
+                            <a class="active">Weather</a>
+                        </li>
+                        <li>
+							<img class={style.navbarimg} src='\assets\icons\trend outline.png'></img>
+							<a>trends</a>
+							</li>
+                        <li>
+							<img class={style.navbarimg} src='\assets\icons\calendar outline.png'></img>
+							<a>calendar</a>
+							</li>
+                    </ul>
+                </div>
+	
 
 				{/* display weather button */}
 				<div class={ style.header }> 
-					<div class={ style.city }>{ this.state.locate }</div>
+					{/* <div class={ style.city }>{ this.state.locate }</div>
 					<div class={ style.conditions }>{ this.state.cond }</div>
-					<span class={ tempStyles }>{ this.state.temp }</span>
+					<span class={ tempStyles }>{ this.state.temp }</span> */}
 				</div>
 				<div class={ style.details }></div>
 				<div class= { style_iphone.container }> 
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }
-					<p>'hey there'</p>
-				</div>
+					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
 				
 			</div>
 		);
