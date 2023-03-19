@@ -46,6 +46,11 @@ export default class Iphone extends Component {
 
 
 	// the main render method for the iphone component
+
+	componentWillMount() {
+		this.fetchWeatherData ();
+	}
+
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
