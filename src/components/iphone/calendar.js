@@ -78,7 +78,7 @@ export default class Iphone extends Component {
 			// 	<div class={ style.header }>
 			<div class={ style.container }> 
 				<div class={style.headerbar}> 
-					<h1>Farm 39</h1> {/* change text based on current page */}
+					<h1>Crop Calendar</h1> {/* change text based on current page */}
 					{/* Farm logo */}
 					<img src="\assets\icons\farm house outline.png" height="50" style="max-width: 65px; position:relative; left: 330px; top:-45px"/>
 					{/* Bar lines */}
@@ -150,7 +150,7 @@ export default class Iphone extends Component {
 							</a>
 							</li>
                         <li>
-							<a href="./components/iphone/calendar.js" >
+							<a href="https://www.google.com/" >
 								<img class={style.navbarimg} src='\assets\icons\calendar outline.png'></img>
 								<a>calendar</a>
 							</a>
