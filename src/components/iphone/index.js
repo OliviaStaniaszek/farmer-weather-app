@@ -59,13 +59,25 @@ export default class Iphone extends Component {
 	}
 
 	setWeatherIcon() {
-		let condition = this.state.cond;
-		console.log(condition);
-		return condition1 ? value1
-			  : condition2 ? value2
-			  : condition3 ? value3
-			  : value4;
-	  }
+		let iconcode = this.state.ico;
+		console.log(iconcode);
+		
+		if(iconcode == '01d' || iconcode == '01n'){
+			return ("sun");
+		}else if(iconcode == '02d' || iconcode == '02n'){
+			return ("partly cloudy")
+		}else if(iconcode== '03d' || iconcode == '04d'|| iconcode == '04n'|| iconcode == '03d'){
+			return ("cloud")
+		}else if(iconcode == '09d'|| iconcode == '09n' || iconcode == '10d'|| iconcode == '10n'){
+			return ("rainy")
+		}else if(iconcode == '11d'|| iconcode == '11n'){
+			return ("storm")
+		}else if(iconcode == '13d'|| iconcode == '13n'){
+			return ("snowy")
+		}else if(iconcode == '50d'|| iconcode == '50n'){
+			return ("fog")
+		}
+	}
 	  
 
 	render() {
@@ -97,6 +109,11 @@ export default class Iphone extends Component {
 
 		//const temp = data.main.temp;
 
+		//for setting weather icon dynamically
+		let weathericon = this.setWeatherIcon();
+		console.log(weathericon);
+
+
 		// display all weather data
 		return (
 			// <div class={ style.container }>
@@ -107,21 +124,18 @@ export default class Iphone extends Component {
 					<h1>Farm 39</h1> {/* change text based on current page */}
 					{/* Farm logo */}
 					<img src="\assets\icons\farm house outline.png" height="50" style="max-width: 65px; position:relative; left: 330px; top:-45px"/>
-					{/* Bar lines */}
-					{/* <img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-130px"/> */}
 				</div>
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
-						<img class = {style.weathericon} src="\assets\icons\partly cloudy coloured.png" ></img>
+						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`}  ></img> 
 						{/* <div class={style.innerboxtext}> */}
 							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { this.state.win }mph</div>
 							
-						
 					</div>
 				</div>
 				{/* alert box */}
@@ -191,7 +205,7 @@ export default class Iphone extends Component {
 				</div>
 				<div class={ style.details }></div>
 				<div class= { style_iphone.container }> 
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
+					// { this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
 				
 			</div>
 		);
