@@ -35,9 +35,7 @@ export default class Iphone extends Component {
 		//http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5
 
 
-		//5 day forecast url
-		//http://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
-
+		
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
 		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
 		$.ajax({
@@ -74,7 +72,7 @@ export default class Iphone extends Component {
         }else if(iconcode== '03d'|| iconcode == '03n'){
 			return ("cloud")
 		}else if(iconcode == '04d'|| iconcode == '04n'){
-			return ("broken cloud")
+			return ("broken clouds")
 		}else if(iconcode == '09d'|| iconcode == '09n'){
 			return ("rainy")
 		}else if( iconcode == '10d'){

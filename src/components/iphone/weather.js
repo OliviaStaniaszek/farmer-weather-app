@@ -31,8 +31,22 @@ export default class Iphone extends Component {
 		//url Sanchia got after creating an account, gives more accurate weather
 		//http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
 
+        //5 day forecast url
+		//http://api.openweathermap.org/data/2.5/forecast/daily?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
+
+		//http://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
+
 		// Previous url Jane gave
 		//http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5
+
+        //live forecast sanchia
+        // http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
+
+
+        //one call olivia
+        //https://api.openweathermap.org/data/2.5/onecall?lat=51.5072&lon=0.1276&q=London,uk&units=metric&appid=a5d58765183c879a7b09d117946fbeb8
+        
+        //https://api.openweathermap.org/data/2.5/onecall?lat=51.50&lon=0.12&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
 
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
 		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
@@ -70,7 +84,7 @@ export default class Iphone extends Component {
         }else if(iconcode== '03d'|| iconcode == '03n'){
 			return ("cloud")
 		}else if(iconcode == '04d'|| iconcode == '04n'){
-			return ("broken cloud")
+			return ("broken clouds")
 		}else if(iconcode == '09d'|| iconcode == '09n'){
 			return ("rainy")
 		}else if( iconcode == '10d'){
