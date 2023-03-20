@@ -132,9 +132,14 @@ export default class Iphone extends Component {
 
 				{/* weekly overview box */}
 				<div class={style.greybox} flex-container >
-					<h2>Weekly overview</h2>
-					
-					<img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img>
+					<h2>To Do</h2>
+					<div class={style.innerbox}>
+						<p class={style.innerboxtext}>1. Irrigate lettuce</p>
+						<p>2. Milk the cows</p>
+						<p>3. Prepare compost heap</p>
+						
+					</div>
+					{/* <img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img> */}
 
 				</div>
 				
