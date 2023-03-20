@@ -1,12 +1,28 @@
 // import 'promise-polyfill';
 // import 'isomorphic-fetch';
 import { h, render } from 'preact';
+import Router from 'preact-router';
+
 import './style';
+
+import Index from './components/iphone/index';
+import Crops from './components/iphone/crops';
+
+const Routes = () => (
+<div>
+	<Router>
+		<Index path="/" />
+		<Crops path="/crops" />
+		
+	</Router>
+	</div>
+)
+
 
 let root;
 function init() {
 	let App = require('./components/app').default;
-	root = render(<App />, document.body, root);
+	root = render(<Routes />, document.body, root);
 }
 
 // register ServiceWorker via OfflinePlugin, for prod only:

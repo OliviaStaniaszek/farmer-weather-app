@@ -101,18 +101,7 @@ export default class Iphone extends Component {
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
-					<div class={style.innerbox}>
-						<img class = {style.weathericon} src="\assets\icons\partly cloudy coloured.png" ></img>
-						{/* <div class={style.innerboxtext}> */}
-							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
-							<div class={ style.conditions }>{ this.state.cond }</div>
-							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
-							<div class={ style.wind }>wind: { this.state.win }mph</div>
-							
-							{/* <p>°C</p> */}
-						{/* </div> */}
-						
-					</div>
+					
 				</div>
 				{/* alert box */}
 				<div class={style.redbox} flex-container>
