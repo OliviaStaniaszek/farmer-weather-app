@@ -109,34 +109,10 @@ export default class Iphone extends Component {
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { this.state.win }mph</div>
 							
-							{/* <p>°C</p> */}
-						{/* </div> */}
 						
 					</div>
 				</div>
-				{/* alert box */}
-				<div class={style.redbox} flex-container>
-					<h2>! Alert</h2>
-					<div class={style.innerbox}>
-						<p class={style.innerboxtext}>Heavy rain incoming</p>
-					</div>
-				</div>
-
-				{/* tasks box */}
-				<div class={style.greenbox} flex-container>
-					<h2>Tasks</h2>
-					<div class={style.innerbox}>
-						<p class={style.innerboxtext}>Field 3 ready to harvest</p>
-					</div>
-				</div>
-
-				{/* weekly overview box */}
-				<div class={style.greybox} flex-container >
-					<h2>Weekly overview</h2>
-					
-					<img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img>
-
-				</div>
+				
 				
 				<nav>
 				<div class={style.navbar} flex-box-container> 

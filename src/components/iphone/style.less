@@ -110,7 +110,6 @@
 	flex-direction: row;
 	padding: 3%;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 .redbox{
 	background-color: @red;
@@ -118,7 +117,6 @@
 	flex-direction: row;
 	padding: 3%;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 .greenbox{
 	background-color: @green;
@@ -126,7 +124,6 @@
 	flex-direction: row;
 	padding: 3%;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
 }
 .greybox{
 	background-color: @grey;
@@ -134,66 +131,85 @@
 	flex-direction: row;
 	padding: 3%;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
+	height: 13%;
+	
+.orangebox{
+	background-color: @orange;
+	margin: 2%;
+	flex-direction: row;
+	padding: 3%;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.yellowbox{
+	background-color: @yellow;
+	margin: 2%;
+	flex-direction: row;
+	padding: 3%;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 
 // navbar
-.navbar{
-	display: block;
-	background-color: white;
-	position: fixed;
-	bottom: 0;
-	width: 27%;
-	height: 13%;
+	.navbar{
+		display: block;
+		background-color: white;
+		position: fixed;
+		bottom: 0;
+		width: 414px;
+		height: 14%;
+		padding: 2%;
+		display: flex;
+		justify-content: space-between;
+		text-align: center;
+	}
+
+	.navbarimg{
+		height: 50px;
+		// padding: 2%;
+		margin: 2%;
+	}
+
+	.navbarelement{
+		float: left;
+		width: 33.3%;
+		padding: 1%;
+	}
+
+	.navbarelement p{
+		// display: block;
+		color: black;
+		text-align: center;
+		// padding: 14px 10px;
+		text-decoration: none;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		position: relative;
+		bottom: 23px;
+	}
+
+	.navbar a:hover{
+		background-color: @grey;
+	}
+
+// table
+	table {
+		border-collapse: collapse;
+		width: 100%;
+	}
+  
+	th, td {
+		text-align: left;
+		padding: 8px;
+	}
 	
-}
-.navbar ul{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	border: 1px solid #e7e7e7;
-	background-color: white;
+	tr:nth-child(even){background-color: #f2f2f2}
 	
-}
-
-.navbar ul li {
-	float: left;
-	width: 82.5px;
-}
-
-.navbar li a {
-	display: block;
-	color: black;
-	text-align: center;
-	padding: 14px 10px;
-	text-decoration: none;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	
-
-}
-.navbarimg{
-	height: 50px;
-	padding: 0px;
-	margin-top: -10px;
-	position: relative;
-	left: 3%;
-	
-
-	// float:;
-}
-
-// .navbar ul li a:hover:not(.active) {
-// background-color: #ddd;
-// }
-
-.navbar ul li a.active {
-color: white;
-background-color: #04AA6D;
-text-align: center;
-}
-
+	th {
+		background-color: #838383;
+		color: white;
+	}
 
 h1{
     color: black;

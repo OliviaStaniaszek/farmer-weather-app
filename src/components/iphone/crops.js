@@ -95,49 +95,146 @@ export default class Iphone extends Component {
 					<h1>Farm 39</h1> {/* change text based on current page */}
 					{/* Farm logo */}
 					<img src="\assets\icons\farm house outline.png" height="50" style="max-width: 65px; position:relative; left: 330px; top:-45px"/>
-					{/* Bar lines */}
-					{/* <img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-130px"/> */}
 				</div>
-				{/* weather box */}
-				<div class={style.bluebox} flex-container>
-					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
-					
+				<div class={style.greybox} flex-container>
+					<h2>Your farm</h2>
+					<img src="\assets\icons\farm fields.png" style="width: 375px;"></img>
 				</div>
-				{/* alert box */}
-				<div class={style.redbox} flex-container>
-					<h2>! Alert</h2>
+				<div class={style.yellowbox} flex-container>
+					<h2>Field 1</h2>
 					<div class={style.innerbox}>
-						<p class={style.innerboxtext}>Heavy rain incoming</p>
+						<table>
+							<tr>
+								<th>Crop</th>
+								<th>Wheat</th>
+							</tr>
+							<tr>
+								<td>Plant date</td>
+								<td>April</td>
+							</tr>
+							<tr>
+								<td>Harvest date</td>
+								<td>August</td>
+							</tr>
+							<tr>
+								<td>Last irrigation</td>
+								<td>2 days ago</td>
+							</tr>
+							<tr>
+								<td>Last fertilisation</td>
+								<td>1 week ago</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 
-				{/* tasks box */}
+				<div class={style.orangebox} flex-container>
+					<h2>Field 2</h2>
+					<div class={style.innerbox}>
+						<table>
+							<tr>
+								<th>Crop</th>
+								<th>Wheat</th>
+							</tr>
+							<tr>
+								<td>Plant date</td>
+								<td>April</td>
+							</tr>
+							<tr>
+								<td>Harvest date</td>
+								<td>August</td>
+							</tr>
+							<tr>
+								<td>Last irrigation</td>
+								<td>2 days ago</td>
+							</tr>
+							<tr>
+								<td>Last fertilisation</td>
+								<td>1 week ago</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
 				<div class={style.greenbox} flex-container>
-					<h2>Tasks</h2>
+					<h2>Field 3</h2>
 					<div class={style.innerbox}>
-						<p class={style.innerboxtext}>Field 3 ready to harvest</p>
+						<table>
+							<tr>
+								<th>Crop</th>
+								<th>Wheat</th>
+							</tr>
+							<tr>
+								<td>Plant date</td>
+								<td>April</td>
+							</tr>
+							<tr>
+								<td>Harvest date</td>
+								<td>August</td>
+							</tr>
+							<tr>
+								<td>Last irrigation</td>
+								<td>2 days ago</td>
+							</tr>
+							<tr>
+								<td>Last fertilisation</td>
+								<td>1 week ago</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 
-				{/* weekly overview box */}
-				<div class={style.greybox} flex-container >
-					<h2>Weekly overview</h2>
-					
-					<img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img>
-
+				<div class={style.bluebox} flex-container>
+					<h2>Field 4</h2>
+					<div class={style.innerbox}>
+						<table>
+							<tr>
+								<th>Crop</th>
+								<th>Wheat</th>
+							</tr>
+							<tr>
+								<td>Plant date</td>
+								<td>April</td>
+							</tr>
+							<tr>
+								<td>Harvest date</td>
+								<td>August</td>
+							</tr>
+							<tr>
+								<td>Last irrigation</td>
+								<td>2 days ago</td>
+							</tr>
+							<tr>
+								<td>Last fertilisation</td>
+								<td>1 week ago</td>
+							</tr>
+						</table>
+					</div>
 				</div>
+
+				
 				
 				<nav>
-					<Link activeClassName="active" href="/">
-						Home
-					</Link>
-					<Link activeClassName="active" href="/crops">
-						{/* <img class={style.navbarimg} src='\assets\icons\crops outline.png'></img> */}
-						crops
-					</Link>
-					<Link activeClassName="active" href="/other">
-						other
-					</Link>
+				<div class={style.navbar} flex-box-container> 
+					<div class={style.navbarelement}>
+						<Link activeClassName="active" href="/weather">
+							<img class={style.navbarimg} src='\assets\icons\weather outline.png'></img>
+							<p>Weather</p>
+						</Link>
+					</div>
+					<div class={style.navbarelement}>
+						<Link activeClassName="active" href="/" >
+							<img class={style.navbarimg} src='\assets\icons\farm house outline.png'></img>
+							<p>Home</p>
+						</Link>
+					</div>
+					<div class={style.navbarelement}>
+						<Link activeClassName="active" href="/crops">
+							<img class={style.navbarimg} src='\assets\icons\crops outline.png'></img>
+							<p>Crops</p>
+						</Link>
+					</div>
+				</div>
 				</nav>
 				
 	

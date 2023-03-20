@@ -7,13 +7,15 @@ import './style';
 
 import Index from './components/iphone/index';
 import Crops from './components/iphone/crops';
+import Weather from './components/iphone/weather';
 
 const Routes = () => (
 <div>
 	<Router>
 		<Index path="/" />
 		<Crops path="/crops" />
-		
+		<Weather path="/weather" />
+
 	</Router>
 	</div>
 )
