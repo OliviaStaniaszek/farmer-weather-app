@@ -62,14 +62,25 @@ export default class Iphone extends Component {
 		let iconcode = this.state.ico;
 		console.log(iconcode);
 		
-		if(iconcode == '01d' || iconcode == '01n'){
+		if(iconcode == '01d'){
 			return ("sun");
-		}else if(iconcode == '02d' || iconcode == '02n'){
+		}else if( iconcode == '01n'){
+            return ("night");
+        }
+        else if(iconcode == '02d'){
 			return ("partly cloudy")
-		}else if(iconcode== '03d' || iconcode == '04d'|| iconcode == '04n'|| iconcode == '03d'){
+		}else if( iconcode == '02n'){
+            return ("cloudy night");  
+        }else if(iconcode== '03d'|| iconcode == '03n'){
 			return ("cloud")
-		}else if(iconcode == '09d'|| iconcode == '09n' || iconcode == '10d'|| iconcode == '10n'){
+		}else if(iconcode == '04d'|| iconcode == '04n'){
+			return ("broken cloud")
+		}else if(iconcode == '09d'|| iconcode == '09n'){
 			return ("rainy")
+		}else if( iconcode == '10d'){
+			return ("day rain")
+		}else if(iconcode == '10n'){
+			return ("night rain")
 		}else if(iconcode == '11d'|| iconcode == '11n'){
 			return ("storm")
 		}else if(iconcode == '13d'|| iconcode == '13n'){
