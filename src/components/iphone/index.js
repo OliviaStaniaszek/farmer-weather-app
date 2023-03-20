@@ -58,7 +58,15 @@ export default class Iphone extends Component {
 		this.fetchWeatherData ();
 	}
 
-
+	setWeatherIcon() {
+		let condition = this.state.cond;
+		console.log(condition);
+		return condition1 ? value1
+			  : condition2 ? value2
+			  : condition3 ? value3
+			  : value4;
+	  }
+	  
 
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
@@ -113,8 +121,6 @@ export default class Iphone extends Component {
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { this.state.win }mph</div>
 							
-							{/* <p>°C</p> */}
-						{/* </div> */}
 						
 					</div>
 				</div>
@@ -141,12 +147,17 @@ export default class Iphone extends Component {
 						<p class={style.innerboxtext}>1. Irrigate lettuce</p>
 						<p>2. Milk the cows</p>
 						<p>3. Prepare compost heap</p>
-						
+					
 					</div>
 					{/* <img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img> */}
 
 				</div>
-				
+
+				<div class={style.bufferbox}>
+					box
+					{/* adds blank space at the end so stuff isnt hidden behind navbar */}
+				</div>
+
 				<nav>
 				<div class={style.navbar} flex-box-container> 
 					<div class={style.navbarelement}>
@@ -187,11 +198,12 @@ export default class Iphone extends Component {
 	}
 
 	parseResponse = (parsed_json) => {
-		var location = parsed_json['name'];
-		var temp_c = parsed_json['main']['temp'];
-		var conditions = parsed_json['weather']['0']['description'];
-		var humidity = parsed_json['main']['humidity'];
-		var wind = parsed_json['wind']['speed'];
+		let location = parsed_json['name'];
+		let temp_c = parsed_json['main']['temp'];
+		let conditions = parsed_json['weather']['0']['description'];
+		let humidity = parsed_json['main']['humidity'];
+		let wind = parsed_json['wind']['speed'];
+		let icon = parsed_json['weather']['0']['icon'];
 
 		// set states for fields so they could be rendered later on
 		this.setState({
@@ -199,7 +211,8 @@ export default class Iphone extends Component {
 			temp: temp_c,
 			cond : conditions,
 			hum: humidity,
-			win: wind
+			win: wind,
+			ico: icon
 		});      
 	}
 }

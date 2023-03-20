@@ -111,8 +111,19 @@ export default class Iphone extends Component {
 							
 						
 					</div>
+
+                    <br></br>
+
+                    <div class={style.innerbox}>
+                        more weather stuff
+                    </div>
+
 				</div>
 				
+                <div class={style.bufferbox}>
+                    box
+					{/* adds blank space at the end so stuff isnt hidden behind navbar */}
+				</div>
 				
 				<nav>
 				<div class={style.navbar} flex-box-container> 
