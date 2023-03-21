@@ -173,7 +173,7 @@ export default class Iphone extends Component {
 							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
-							<div class={ style.wind }>wind: { this.state.win }mph</div>
+							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 
 				<table>
 					<tr>
@@ -182,8 +182,8 @@ export default class Iphone extends Component {
 						
 					</tr>
 					<tr >
-						<td>{ this.state.hi }°C</td>
-						<td>{ this.state.lo }°C</td>
+						<td>{ Math.round(this.state.hi) }°C</td>
+						<td>{ Math.round(this.state.lo) }°C</td>
 						
 					</tr>
 					<tr>
@@ -207,20 +207,10 @@ export default class Iphone extends Component {
 						
 					</tr>
 					
-				</table>
-							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
-							
+				</table>		
 						
 					</div>
 
-                    <br></br>
-
-                    <div class={style.innerbox}>
-                        <table class={style.weathertable}>
-                            
-
-                        </table>
-                    </div>
 
 				</div>
 				
