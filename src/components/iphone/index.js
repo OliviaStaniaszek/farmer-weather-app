@@ -137,13 +137,29 @@ export default class Iphone extends Component {
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
-						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`}  ></img> 
-						{/* <div class={style.innerboxtext}> */}
-							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1> 
-							<div class={ style.conditions }>{ this.state.cond }</div>
-							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
-							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
-							
+						<table class={style.weathertable}>
+							<tr>
+								<td style="width:35%;">
+									<img style="margin-left:20%" class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
+								</td>
+								<td>
+									<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div style="padding-top:5%; text-align:left;" class={ style.humidity }><b>Humidity</b>: { this.state.hum }%</div>
+								</td>
+								<td rowSpan="2" style="border: height:3%;">
+									<div class={ style.conditions }>{ this.state.cond }</div>
+								</td>
+							</tr>
+							<tr>
+							<td>
+									<div style="text-align:left;" class={ style.wind }><b>Wind</b>: { Math.round(this.state.win * 10) / 10 }mph</div>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				{/* alert box */}

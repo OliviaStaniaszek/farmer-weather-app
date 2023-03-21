@@ -110,7 +110,9 @@ export default class Iphone extends Component {
 		//This sets the date
 		const currentDate = new Date();
 		const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		const shortdaysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 		const dayOfWeek = daysOfWeek[currentDate.getDay()];
+		const shortDayOfWeek = shortdaysOfWeek[currentDate.getDay()];
 		const dayOfMonth = currentDate.getDate();
 		const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		const monthName = monthNames[currentDate.getMonth()];
@@ -118,7 +120,6 @@ export default class Iphone extends Component {
 		const suffixes = ['th', 'st', 'nd', 'rd'];
 		const daySuffix = suffixes[(dayOfMonth-20)%10] || suffixes[dayOfMonth] || suffixes[0];
 		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName}`;
-
 		//This sets 24hr time
 		const hours = currentDate.getHours();
 		const minutes = currentDate.getMinutes();
@@ -138,7 +139,6 @@ export default class Iphone extends Component {
 			minute: '2-digit',
 			hour12: false,
 		});
-
 		//This sets 12 hour time
 		// const hours = currentDate.getHours() % 12 || 12;
 		// const minutes = currentDate.getMinutes();
@@ -167,15 +167,42 @@ export default class Iphone extends Component {
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
-					<div class={style.innerbox}>
+					{/* <div class={style.innerbox}>
 						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
-						{/* <div class={style.innerboxtext}> */}
 							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
-					</div>
+					</div> */}
                     <br></br>
+					<div class={style.innerbox}>
+						<table class={style.weathertable}>
+							<tr>
+								<td style="width:35%;">
+									<img style="margin-left:20%" class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
+								</td>
+								<td>
+									<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div style="padding-top:5%; text-align:left;" class={ style.humidity }><b>Humidity</b>: { this.state.hum }%</div>
+								</td>
+								<td rowSpan="2" style="border: height:3%;">
+									<div class={ style.conditions }>{ this.state.cond }</div>
+								</td>
+							</tr>
+							<tr>
+							<td>
+									<div style="text-align:left;" class={ style.wind }><b>Wind</b>: { Math.round(this.state.win * 10) / 10 }mph</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+
+					<br></br>
+
                     <div class={style.innerbox}>
                         <table class={style.weathertable}>
                         <tr>
@@ -230,6 +257,38 @@ export default class Iphone extends Component {
 					<div class={style.innerbox}>
 						{/* widget */}
 						{/* <div id="ww_351d5d23375b3" v='1.3' loc='id' a='{"t":"horizontal","lang":"en","sl_lpl":1,"ids":["wl4419"],"font":"Arial","sl_ics":"one","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>Weather Data Source: <a href="https://havadurumuuzun.com/londra_hava_durumu_30_gunluk/" id="ww_351d5d23375b3_u" target="_blank">hava tahmini Londra 30 gunluk</a></div><script async src="https://app1.weatherwidget.org/js/?id=ww_351d5d23375b3"></script> */}
+						<table class={style.weathertable}>
+							<tr style="font-weight:bold;">
+								<td>{shortDayOfWeek} {dayOfMonth}</td>
+								<td>{shortdaysOfWeek[currentDate.getDay()+1]} {currentDate.getDate()+1}</td>
+								<td>{shortdaysOfWeek[currentDate.getDay()+2]} {currentDate.getDate()+2}</td>
+								<td>{shortdaysOfWeek[currentDate.getDay()+3]} {currentDate.getDate()+3}</td>
+								<td>{shortdaysOfWeek[currentDate.getDay()+4]} {currentDate.getDate()+4}</td>
+								{/* <td>{shortdaysOfWeek[currentDate.getDay()+5]} {currentDate.getDate()+5}</td>
+								<td>{shortdaysOfWeek[currentDate.getDay()+6]} {currentDate.getDate()+6}</td> */}
+							</tr>
+							<tr>
+								<td><img class={style.forecasticon} src={`/assets/icons/weather icons/${weathericon}.png`}></img></td>
+								<td><img class={style.forecasticon} src="\assets\icons\weather icons\rainy.png"></img></td>
+								<td><img class={style.forecasticon} src="\assets\icons\weather icons\rainy.png"></img></td>
+								<td><img class={style.forecasticon} src="\assets\icons\weather icons\cloud.png"></img></td>
+								<td><img class={style.forecasticon} src="\assets\icons\weather icons\sun.png"></img></td>
+							</tr>
+							<tr>
+								<td>{ Math.round(this.state.hi) }°C</td>
+								<td>13°C</td>
+								<td>12°C</td>
+								<td>12°C</td>
+								<td>14°C</td>
+							</tr>
+							<tr style="color:grey;">
+								<td>{ Math.round(this.state.lo) }°C</td>
+								<td>9°C</td>
+								<td>8°C</td>
+								<td>8°C</td>
+								<td>10°C</td>
+							</tr>
+						</table>
 					</div>
 
 				</div>
