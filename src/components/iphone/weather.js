@@ -166,34 +166,7 @@ export default class Iphone extends Component {
 
                     <div class={style.innerbox}>
                         <table class={style.weathertable}>
-                            <tr>
-                                <td>
-                                    <h3>14</h3>
-                                    <p>high</p>
-                                </td>
-                                <td>
-                                    <h3>7mph</h3>
-                                    <p>wind</p>
-                                </td>
-                                <td>
-                                    <h3>05:23</h3>
-                                    <p>sunrise</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h3>10</h3>
-                                    <p>low</p>
-                                </td>
-                                <td>
-                                    <h3>50%</h3>
-                                    <p>rain</p>
-                                </td>
-                                <td>
-                                    <h3>20:57</h3>
-                                    <p>sunset</p>
-                                </td>
-                            </tr>
+                            
 
                         </table>
                     </div>
