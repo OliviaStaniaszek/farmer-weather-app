@@ -175,7 +175,7 @@ export default class Iphone extends Component {
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 
-				<table>
+				<table class="table2">
 					<tr>
 						<th>High</th>
 						<th>Low</th>
