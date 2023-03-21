@@ -54,7 +54,7 @@ export default class Iphone extends Component {
 		this.fetchWeatherData ();
 	}
 
-
+	
 
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
@@ -76,6 +76,21 @@ export default class Iphone extends Component {
 		const hours = currentDate.getHours();
 		const minutes = currentDate.getMinutes();
 		const formattedTime = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+		//Sunrise Time
+		const riseTime = new Date(this.state.rise * 1000);
+		const rTime = riseTime.toLocaleTimeString([], {
+			hour: '2-digit',
+			minute: '2-digit',
+			hour12: false,
+		  });
+
+		//Sunset Time
+		const setTime = new Date(this.state.set * 1000);
+		const sTime = setTime.toLocaleTimeString([], {
+			hour: '2-digit',
+			minute: '2-digit',
+			hour12: false,
+		});
 
 		//This sets 12 hour time
 		// const hours = currentDate.getHours() % 12 || 12;
@@ -108,6 +123,40 @@ export default class Iphone extends Component {
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { this.state.win }mph</div>
+
+				<table>
+					<tr>
+						<th>High</th>
+						<th>Low</th>
+						
+					</tr>
+					<tr >
+						<td>{ this.state.hi }°C</td>
+						<td>{ this.state.lo }°C</td>
+						
+					</tr>
+					<tr>
+						<th>Pressure</th>
+						<th>Clouds</th>
+						
+					</tr>
+					<tr>
+						<td>{ this.state.pres } hPa</td>
+						<td>{ this.state.cl }%</td>
+						
+					</tr>
+					<tr>
+						<th>Sunrise</th>
+						<th>Sunset</th>
+						
+					</tr>
+					<tr>
+						<td>{ rTime }</td>
+						<td>{ sTime }</td>
+						
+					</tr>
+					
+				</table>
 							
 						
 					</div>
@@ -159,6 +208,12 @@ export default class Iphone extends Component {
 		var conditions = parsed_json['weather']['0']['description'];
 		var humidity = parsed_json['main']['humidity'];
 		var wind = parsed_json['wind']['speed'];
+		var high = parsed_json['main']['temp_max'];
+		var low = parsed_json['main']['temp_min'];
+		var pressure = parsed_json['main']['pressure'];
+		var clouds = parsed_json['clouds']['all'];
+		var sunrise = parsed_json['sys']['sunrise'];
+		var sunset = parsed_json['sys']['sunset'];
 
 		// set states for fields so they could be rendered later on
 		this.setState({
@@ -166,7 +221,15 @@ export default class Iphone extends Component {
 			temp: temp_c,
 			cond : conditions,
 			hum: humidity,
-			win: wind
+			win: wind,
+			hi: high,
+			lo: low,
+			pres: pressure,
+			cl: clouds,
+			rise: sunrise,
+			set: sunset
 		});      
 	}
+
+	
 }
