@@ -31,8 +31,22 @@ export default class Iphone extends Component {
 		//url Sanchia got after creating an account, gives more accurate weather
 		//http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
 
+        //5 day forecast url
+		//http://api.openweathermap.org/data/2.5/forecast/daily?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
+
+		//http://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
+
 		// Previous url Jane gave
 		//http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5
+
+        //live forecast sanchia
+        // http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
+
+
+        //one call olivia
+        //https://api.openweathermap.org/data/2.5/onecall?lat=51.5072&lon=0.1276&q=London,uk&units=metric&appid=a5d58765183c879a7b09d117946fbeb8
+        
+        //https://api.openweathermap.org/data/2.5/onecall?lat=51.50&lon=0.12&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
 
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
 		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
@@ -55,6 +69,39 @@ export default class Iphone extends Component {
 	}
 
 	
+    setWeatherIcon() {
+		let iconcode = this.state.ico;
+		console.log(iconcode);
+		
+		if(iconcode == '01d'){
+			return ("sun");
+		}else if( iconcode == '01n'){
+            return ("night");
+        }
+        else if(iconcode == '02d'){
+			return ("partly cloudy")
+		}else if( iconcode == '02n'){
+            return ("cloudy night");  
+        }else if(iconcode== '03d'|| iconcode == '03n'){
+			return ("cloud")
+		}else if(iconcode == '04d'|| iconcode == '04n'){
+			return ("broken clouds")
+		}else if(iconcode == '09d'|| iconcode == '09n'){
+			return ("rainy")
+		}else if( iconcode == '10d'){
+			return ("day rain")
+		}else if(iconcode == '10n'){
+			return ("night rain")
+		}else if(iconcode == '11d'|| iconcode == '11n'){
+			return ("storm")
+		}else if(iconcode == '13d'|| iconcode == '13n'){
+			return ("snowy")
+		}else if(iconcode == '50d'|| iconcode == '50n'){
+			return ("fog")
+		}
+	}
+
+
 
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
@@ -100,6 +147,10 @@ export default class Iphone extends Component {
 
 		//const temp = data.main.temp;
 
+        //for setting weather icon dynamically
+        let weathericon = this.setWeatherIcon();
+		console.log(weathericon);
+
 		// display all weather data
 		return (
 			// <div class={ style.container }>
@@ -117,9 +168,9 @@ export default class Iphone extends Component {
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
-						<img class = {style.weathericon} src="\assets\icons\partly cloudy coloured.png" ></img>
+						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
 						{/* <div class={style.innerboxtext}> */}
-							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
+							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { this.state.win }mph</div>
@@ -157,11 +208,53 @@ export default class Iphone extends Component {
 					</tr>
 					
 				</table>
+							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 							
 						
 					</div>
+
+                    <br></br>
+
+                    <div class={style.innerbox}>
+                        <table class={style.weathertable}>
+                            <tr>
+                                <td>
+                                    <h3>14</h3>
+                                    <p>high</p>
+                                </td>
+                                <td>
+                                    <h3>7mph</h3>
+                                    <p>wind</p>
+                                </td>
+                                <td>
+                                    <h3>05:23</h3>
+                                    <p>sunrise</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>10</h3>
+                                    <p>low</p>
+                                </td>
+                                <td>
+                                    <h3>50%</h3>
+                                    <p>rain</p>
+                                </td>
+                                <td>
+                                    <h3>20:57</h3>
+                                    <p>sunset</p>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+
 				</div>
 				
+                <div class={style.bufferbox}>
+                    box
+					{/* adds blank space at the end so stuff isnt hidden behind navbar */}
+				</div>
 				
 				<nav>
 				<div class={style.navbar} flex-box-container> 
@@ -214,6 +307,7 @@ export default class Iphone extends Component {
 		var clouds = parsed_json['clouds']['all'];
 		var sunrise = parsed_json['sys']['sunrise'];
 		var sunset = parsed_json['sys']['sunset'];
+        let icon = parsed_json['weather']['0']['icon'];
 
 		// set states for fields so they could be rendered later on
 		this.setState({
@@ -227,7 +321,8 @@ export default class Iphone extends Component {
 			pres: pressure,
 			cl: clouds,
 			rise: sunrise,
-			set: sunset
+			set: sunset,
+            ico: icon
 		});      
 	}
 

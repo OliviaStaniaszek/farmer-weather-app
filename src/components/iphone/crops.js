@@ -100,6 +100,7 @@ export default class Iphone extends Component {
 					<h2>Your farm</h2>
 					<img src="\assets\icons\farm fields.png" style="width: 375px;"></img>
 				</div>
+
 				<div class={style.yellowbox} flex-container>
 					<h2>Field 1</h2>
 					<div class={style.innerbox}>
@@ -134,7 +135,7 @@ export default class Iphone extends Component {
 						<table>
 							<tr>
 								<th>Crop</th>
-								<th>Wheat</th>
+								<th>Oats</th>
 							</tr>
 							<tr>
 								<td>Plant date</td>
@@ -162,7 +163,7 @@ export default class Iphone extends Component {
 						<table>
 							<tr>
 								<th>Crop</th>
-								<th>Wheat</th>
+								<th>Barley</th>
 							</tr>
 							<tr>
 								<td>Plant date</td>
@@ -190,7 +191,7 @@ export default class Iphone extends Component {
 						<table>
 							<tr>
 								<th>Crop</th>
-								<th>Wheat</th>
+								<th>Corn</th>
 							</tr>
 							<tr>
 								<td>Plant date</td>
@@ -212,7 +213,10 @@ export default class Iphone extends Component {
 					</div>
 				</div>
 
-				
+				<div class={style.bufferbox}>
+					box
+					{/* adds blank space at the end so stuff isnt hidden behind navbar */}
+				</div>
 				
 				<nav>
 				<div class={style.navbar} flex-box-container> 

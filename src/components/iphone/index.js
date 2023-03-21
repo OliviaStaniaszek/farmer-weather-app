@@ -35,9 +35,7 @@ export default class Iphone extends Component {
 		//http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5
 
 
-		//5 day forecast url
-		//http://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
-
+		
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
 		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
 		$.ajax({
@@ -58,7 +56,37 @@ export default class Iphone extends Component {
 		this.fetchWeatherData ();
 	}
 
-
+	setWeatherIcon() {
+		let iconcode = this.state.ico;
+		console.log(iconcode);
+		
+		if(iconcode == '01d'){
+			return ("sun");
+		}else if( iconcode == '01n'){
+            return ("night");
+        }else if(iconcode == '02d'){
+			return ("partly cloudy")
+		}else if( iconcode == '02n'){
+            return ("cloudy night");  
+        }else if(iconcode== '03d'|| iconcode == '03n'){
+			return ("cloud")
+		}else if(iconcode == '04d'|| iconcode == '04n'){
+			return ("broken clouds")
+		}else if(iconcode == '09d'|| iconcode == '09n'){
+			return ("rainy")
+		}else if( iconcode == '10d'){
+			return ("day rain")
+		}else if(iconcode == '10n'){
+			return ("night rain")
+		}else if(iconcode == '11d'|| iconcode == '11n'){
+			return ("storm")
+		}else if(iconcode == '13d'|| iconcode == '13n'){
+			return ("snowy")
+		}else if(iconcode == '50d'|| iconcode == '50n'){
+			return ("fog")
+		}
+	}
+	  
 
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
@@ -89,6 +117,11 @@ export default class Iphone extends Component {
 
 		//const temp = data.main.temp;
 
+		//for setting weather icon dynamically
+		let weathericon = this.setWeatherIcon();
+		console.log(weathericon);
+
+
 		// display all weather data
 		return (
 			// <div class={ style.container }>
@@ -99,23 +132,18 @@ export default class Iphone extends Component {
 					<h1>Farm 39</h1> {/* change text based on current page */}
 					{/* Farm logo */}
 					<img src="\assets\icons\farm house outline.png" height="50" style="max-width: 65px; position:relative; left: 330px; top:-45px"/>
-					{/* Bar lines */}
-					{/* <img src="\assets\icons\lines.png" height="50" style="max-width: 50px; position:relative; left: 10px; top:-130px"/> */}
 				</div>
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
-						<img class = {style.weathericon} src="\assets\icons\partly cloudy coloured.png" ></img>
+						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`}  ></img> 
 						{/* <div class={style.innerboxtext}> */}
-							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
+							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1> 
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
-							<div class={ style.wind }>wind: { this.state.win }mph</div>
+							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 							
-							{/* <p>°C</p> */}
-						{/* </div> */}
-						
 					</div>
 				</div>
 				{/* alert box */}
@@ -141,12 +169,17 @@ export default class Iphone extends Component {
 						<p class={style.innerboxtext}>1. Irrigate lettuce</p>
 						<p>2. Milk the cows</p>
 						<p>3. Prepare compost heap</p>
-						
+					
 					</div>
 					{/* <img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img> */}
 
 				</div>
-				
+
+				<div class={style.bufferbox}>
+					box
+					{/* adds blank space at the end so stuff isnt hidden behind navbar */}
+				</div>
+
 				<nav>
 				<div class={style.navbar} flex-box-container> 
 					<div class={style.navbarelement}>
@@ -180,18 +213,19 @@ export default class Iphone extends Component {
 				</div>
 				<div class={ style.details }></div>
 				<div class= { style_iphone.container }> 
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
+					// { this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
 				
 			</div>
 		);
 	}
 
 	parseResponse = (parsed_json) => {
-		var location = parsed_json['name'];
-		var temp_c = parsed_json['main']['temp'];
-		var conditions = parsed_json['weather']['0']['description'];
-		var humidity = parsed_json['main']['humidity'];
-		var wind = parsed_json['wind']['speed'];
+		let location = parsed_json['name'];
+		let temp_c = parsed_json['main']['temp'];
+		let conditions = parsed_json['weather']['0']['description'];
+		let humidity = parsed_json['main']['humidity'];
+		let wind = parsed_json['wind']['speed'];
+		let icon = parsed_json['weather']['0']['icon'];
 
 		// set states for fields so they could be rendered later on
 		this.setState({
@@ -199,7 +233,8 @@ export default class Iphone extends Component {
 			temp: temp_c,
 			cond : conditions,
 			hum: humidity,
-			win: wind
+			win: wind,
+			ico: icon
 		});      
 	}
 }
