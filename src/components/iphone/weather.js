@@ -175,15 +175,15 @@ export default class Iphone extends Component {
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 
-				<table class="table2">
+				<table >
 					<tr>
-						<th>High</th>
-						<th>Low</th>
+						<th >High</th>
+						<th >Low</th>
 						
 					</tr>
 					<tr >
-						<td>{ Math.round(this.state.hi) }°C</td>
-						<td>{ Math.round(this.state.lo) }°C</td>
+						<td >{ Math.round(this.state.hi) }°C</td>
+						<td >{ Math.round(this.state.lo) }°C</td>
 						
 					</tr>
 					<tr>
