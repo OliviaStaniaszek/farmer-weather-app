@@ -104,7 +104,7 @@ export default class Iphone extends Component {
 				<div class={style.yellowbox} flex-container>
 					<h2>Field 1</h2>
 					<div class={style.innerbox}>
-						<table>
+						<table class={style.croptable}>
 							<tr>
 								<th>Crop</th>
 								<th>Wheat</th>
@@ -132,7 +132,7 @@ export default class Iphone extends Component {
 				<div class={style.orangebox} flex-container>
 					<h2>Field 2</h2>
 					<div class={style.innerbox}>
-						<table>
+						<table class={style.croptable}>
 							<tr>
 								<th>Crop</th>
 								<th>Oats</th>
@@ -160,7 +160,7 @@ export default class Iphone extends Component {
 				<div class={style.greenbox} flex-container>
 					<h2>Field 3</h2>
 					<div class={style.innerbox}>
-						<table>
+						<table class={style.croptable}>
 							<tr>
 								<th>Crop</th>
 								<th>Barley</th>
@@ -188,7 +188,7 @@ export default class Iphone extends Component {
 				<div class={style.bluebox} flex-container>
 					<h2>Field 4</h2>
 					<div class={style.innerbox}>
-						<table>
+						<table class={style.croptable}>
 							<tr>
 								<th>Crop</th>
 								<th>Corn</th>

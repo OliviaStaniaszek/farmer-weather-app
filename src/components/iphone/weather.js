@@ -174,33 +174,6 @@ export default class Iphone extends Component {
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
-
-                        {/* <table class={style.weathertable}>
-                            <tr>
-                                <th >High</th>
-                                <th >Low</th>
-                            </tr>
-                            <tr >
-                                <td >{ Math.round(this.state.hi) }°C</td>
-                                <td >{ Math.round(this.state.lo) }°C</td>
-                            </tr>
-                            <tr>
-                                <th>Pressure</th>
-                                <th>Clouds</th>
-                            </tr>
-                            <tr>
-                                <td>{ this.state.pres } hPa</td>
-                                <td>{ this.state.cl }%</td>
-                            </tr>
-                            <tr>
-                                <th>Sunrise</th>
-                                <th>Sunset</th>
-                            </tr>
-                            <tr>
-                                <td>{ rTime }</td>
-                                <td>{ sTime }</td>
-                            </tr>
-                        </table>	 */}
 					</div>
                     <br></br>
                     <div class={style.innerbox}>
@@ -253,6 +226,11 @@ export default class Iphone extends Component {
                         </table>
                     </div>
 
+					<br></br>
+					<div class={style.innerbox}>
+						{/* widget */}
+						{/* <div id="ww_351d5d23375b3" v='1.3' loc='id' a='{"t":"horizontal","lang":"en","sl_lpl":1,"ids":["wl4419"],"font":"Arial","sl_ics":"one","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>Weather Data Source: <a href="https://havadurumuuzun.com/londra_hava_durumu_30_gunluk/" id="ww_351d5d23375b3_u" target="_blank">hava tahmini Londra 30 gunluk</a></div><script async src="https://app1.weatherwidget.org/js/?id=ww_351d5d23375b3"></script> */}
+					</div>
 
 				</div>
 				

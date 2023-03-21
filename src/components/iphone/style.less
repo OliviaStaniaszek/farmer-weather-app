@@ -77,7 +77,9 @@
 	.weathertable{
 		background-color: white;
 		padding: 1%;
-		margin-top:0.5%
+		margin-top:0.5%;
+		text-align: center;
+		width: 100%;
 	}
 
 	.weathertable h3{
@@ -97,6 +99,8 @@
 
 	.weathertable td{
 		padding: 0;
+		text-align: center;
+
 	}
 	
 .filled:after {
@@ -239,22 +243,39 @@
 	}
 
 // table
-	table {
-		border-collapse: collapse;
-		width: 100%;
-	}
+	// table {
+	// 	border-collapse: collapse;
+	// 	width: 100%;
+	// }
   
-	th, td {
-		text-align: left;
-		padding: 8px;
-	}
+	// th, td {
+	// 	text-align: left;
+	// 	padding: 8px;
+	// }
 	
-	tr:nth-child(even){background-color: #f2f2f2}
+	// tr:nth-child(even){background-color: #f2f2f2}
 	
-	th {
-		background-color: #838383;
-		color: white;
-	}
+	// th {
+	// 	background-color: #838383;
+	// 	color: white;
+	// }
+
+.croptable{
+	border-collapse: collapse;
+  	width: 100%;
+	font-size: 20px;
+}
+
+.croptable th,td{
+	// background-color: @grey;
+	text-align: left;
+	padding: 1%;
+}
+
+.croptable tr:nth-child(even) {background-color: #f2f2f2;}
+
+
+
 
 h1{
     color: black;
@@ -276,25 +297,7 @@ p{
 }
 
 table{
-	margin-top: -5%;
-	margin-bottom: 1%;
+	margin: auto;
 }
-th{
-	//border: 30px solid;
-	border-color: white;
-	text-align: center;
-	font-size: 180%;
-	border-top: 30px solid;
-	
-  }
 
-td {
-	border-bottom: 5px solid;
-	border-color: white;
-	text-align: center;
-	width: 100px;
-	font-size: 230%;
-	
-	
-	}
 
