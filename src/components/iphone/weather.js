@@ -49,7 +49,7 @@ export default class Iphone extends Component {
         //https://api.openweathermap.org/data/2.5/onecall?lat=51.50&lon=0.12&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
 
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
-		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
+		var url = "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
@@ -175,41 +175,83 @@ export default class Iphone extends Component {
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
 							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 
-				<table >
-					<tr>
-						<th >High</th>
-						<th >Low</th>
-						
-					</tr>
-					<tr >
-						<td >{ Math.round(this.state.hi) }°C</td>
-						<td >{ Math.round(this.state.lo) }°C</td>
-						
-					</tr>
-					<tr>
-						<th>Pressure</th>
-						<th>Clouds</th>
-						
-					</tr>
-					<tr>
-						<td>{ this.state.pres } hPa</td>
-						<td>{ this.state.cl }%</td>
-						
-					</tr>
-					<tr>
-						<th>Sunrise</th>
-						<th>Sunset</th>
-						
-					</tr>
-					<tr>
-						<td>{ rTime }</td>
-						<td>{ sTime }</td>
-						
-					</tr>
-					
-				</table>		
-						
+                        {/* <table class={style.weathertable}>
+                            <tr>
+                                <th >High</th>
+                                <th >Low</th>
+                            </tr>
+                            <tr >
+                                <td >{ Math.round(this.state.hi) }°C</td>
+                                <td >{ Math.round(this.state.lo) }°C</td>
+                            </tr>
+                            <tr>
+                                <th>Pressure</th>
+                                <th>Clouds</th>
+                            </tr>
+                            <tr>
+                                <td>{ this.state.pres } hPa</td>
+                                <td>{ this.state.cl }%</td>
+                            </tr>
+                            <tr>
+                                <th>Sunrise</th>
+                                <th>Sunset</th>
+                            </tr>
+                            <tr>
+                                <td>{ rTime }</td>
+                                <td>{ sTime }</td>
+                            </tr>
+                        </table>	 */}
 					</div>
+                    <br></br>
+                    <div class={style.innerbox}>
+                        <table class={style.weathertable}>
+                        <tr>
+                                <td>
+                                    <p>High</p>
+                                </td>
+                                <td>
+                                    <p>Clouds</p>
+                                </td>
+                                <td>
+                                    <p>Sunrise</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>{ Math.round(this.state.hi) }°C</h3>
+                                </td>
+                                <td>
+                                    <h3>{ this.state.cl }%</h3>
+                                </td>
+                                <td>
+                                    <h3>{ rTime }</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Low</p>
+                                </td>
+                                <td>
+                                    <p>Pressure (hPa)</p>
+                                </td>
+                                <td>
+                                    <p>Sunset</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>{ Math.round(this.state.lo) }°C</h3>
+                                </td>
+                                <td>
+                                    <h3>{ this.state.pres } </h3>
+                                </td>
+                                <td>
+                                    <h3>{ sTime }</h3>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
 
 
 				</div>
