@@ -154,10 +154,10 @@ export default class Iphone extends Component {
 					<div class={style.innerbox}>
 						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
 						{/* <div class={style.innerboxtext}> */}
-							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
+							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
-							<div class={ style.wind }>wind: { this.state.win }mph</div>
+							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 							
 						
 					</div>
@@ -165,7 +165,37 @@ export default class Iphone extends Component {
                     <br></br>
 
                     <div class={style.innerbox}>
-                        more weather stuff
+                        <table class={style.weathertable}>
+                            <tr>
+                                <td>
+                                    <h3>14</h3>
+                                    <p>high</p>
+                                </td>
+                                <td>
+                                    <h3>7mph</h3>
+                                    <p>wind</p>
+                                </td>
+                                <td>
+                                    <h3>05:23</h3>
+                                    <p>sunrise</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>10</h3>
+                                    <p>low</p>
+                                </td>
+                                <td>
+                                    <h3>50%</h3>
+                                    <p>rain</p>
+                                </td>
+                                <td>
+                                    <h3>20:57</h3>
+                                    <p>sunset</p>
+                                </td>
+                            </tr>
+
+                        </table>
                     </div>
 
 				</div>

@@ -135,7 +135,7 @@ export default class Iphone extends Component {
 						<table>
 							<tr>
 								<th>Crop</th>
-								<th>Wheat</th>
+								<th>Oats</th>
 							</tr>
 							<tr>
 								<td>Plant date</td>
@@ -163,7 +163,7 @@ export default class Iphone extends Component {
 						<table>
 							<tr>
 								<th>Crop</th>
-								<th>Wheat</th>
+								<th>Barley</th>
 							</tr>
 							<tr>
 								<td>Plant date</td>
@@ -191,7 +191,7 @@ export default class Iphone extends Component {
 						<table>
 							<tr>
 								<th>Crop</th>
-								<th>Wheat</th>
+								<th>Corn</th>
 							</tr>
 							<tr>
 								<td>Plant date</td>

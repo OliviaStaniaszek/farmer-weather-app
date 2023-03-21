@@ -64,8 +64,7 @@ export default class Iphone extends Component {
 			return ("sun");
 		}else if( iconcode == '01n'){
             return ("night");
-        }
-        else if(iconcode == '02d'){
+        }else if(iconcode == '02d'){
 			return ("partly cloudy")
 		}else if( iconcode == '02n'){
             return ("cloudy night");  
@@ -140,10 +139,10 @@ export default class Iphone extends Component {
 					<div class={style.innerbox}>
 						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`}  ></img> 
 						{/* <div class={style.innerboxtext}> */}
-							<h1 class={ style.temperature }>{ this.state.temp }°C</h1>
+							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1> 
 							<div class={ style.conditions }>{ this.state.cond }</div>
 							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
-							<div class={ style.wind }>wind: { this.state.win }mph</div>
+							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
 							
 					</div>
 				</div>
