@@ -10,6 +10,13 @@ import $ from 'jquery';
 // import the Button component
 import Button from '../button';
 
+let maxtemps = [];
+		let mintemps = [];
+		let icons = [];
+		let dates = [];
+
+		let days = []; //stores indexes of only 1 per day
+		let nights = [];
 
 export default class Iphone extends Component {
 //var Iphone = React.createClass({
@@ -56,6 +63,15 @@ export default class Iphone extends Component {
 			success : this.parseResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
+
+		let url5day = "http://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
+		$.ajax({
+			url: url5day,
+			dataType: "jsonp",
+			success : this.parseResponse2,
+			error : function(req, err){ console.log('API call failed ' + err); }
+		})
+
 		// once the data grabbed, hide the button
 		this.setState({ display: false });
 	}
@@ -69,9 +85,9 @@ export default class Iphone extends Component {
 	}
 
 	
-    setWeatherIcon() {
-		let iconcode = this.state.ico;
-		console.log(iconcode);
+    setWeatherIcon(iconcode) {
+		
+		// console.log(iconcode);
 		
 		if(iconcode == '01d'){
 			return ("sun");
@@ -148,7 +164,7 @@ export default class Iphone extends Component {
 		//const temp = data.main.temp;
 
         //for setting weather icon dynamically
-        let weathericon = this.setWeatherIcon();
+        let weathericon = this.setWeatherIcon(this.state.ico);
 		console.log(weathericon);
 
 		// display all weather data
@@ -167,13 +183,7 @@ export default class Iphone extends Component {
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
-					{/* <div class={style.innerbox}>
-						<img class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
-							<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
-							<div class={ style.conditions }>{ this.state.cond }</div>
-							<div class={ style.humidity }>humidity: { this.state.hum }%</div>
-							<div class={ style.wind }>wind: { Math.round(this.state.win * 10) / 10 }mph</div>
-					</div> */}
+
                     <br></br>
 					<div class={style.innerbox}>
 						<table class={style.weathertable}>
@@ -257,36 +267,36 @@ export default class Iphone extends Component {
 					<div class={style.innerbox}>
 						{/* widget */}
 						{/* <div id="ww_351d5d23375b3" v='1.3' loc='id' a='{"t":"horizontal","lang":"en","sl_lpl":1,"ids":["wl4419"],"font":"Arial","sl_ics":"one","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"#000000","cl_cloud":"#d4d4d4","cl_persp":"#2196F3","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'>Weather Data Source: <a href="https://havadurumuuzun.com/londra_hava_durumu_30_gunluk/" id="ww_351d5d23375b3_u" target="_blank">hava tahmini Londra 30 gunluk</a></div><script async src="https://app1.weatherwidget.org/js/?id=ww_351d5d23375b3"></script> */}
-						<table class={style.weathertable}>
+						<table class={style.weathertable} style="padding: 3% 0;">
 							<tr style="font-weight:bold;">
-								<td>{shortDayOfWeek} {dayOfMonth}</td>
-								<td>{shortdaysOfWeek[currentDate.getDay()+1]} {currentDate.getDate()+1}</td>
-								<td>{shortdaysOfWeek[currentDate.getDay()+2]} {currentDate.getDate()+2}</td>
-								<td>{shortdaysOfWeek[currentDate.getDay()+3]} {currentDate.getDate()+3}</td>
-								<td>{shortdaysOfWeek[currentDate.getDay()+4]} {currentDate.getDate()+4}</td>
+								<td style="width:20%;" >{shortDayOfWeek} {dayOfMonth}</td>
+								<td style="width:20%;">{shortdaysOfWeek[currentDate.getDay()+1]} {currentDate.getDate()+1}</td>
+								<td style="width:20%;">{shortdaysOfWeek[currentDate.getDay()+2]} {currentDate.getDate()+2}</td>
+								<td style="width:20%;">{shortdaysOfWeek[currentDate.getDay()+3]} {currentDate.getDate()+3}</td>
+								<td style="width:20%;">{shortdaysOfWeek[currentDate.getDay()+4]} {currentDate.getDate()+4}</td>
 								{/* <td>{shortdaysOfWeek[currentDate.getDay()+5]} {currentDate.getDate()+5}</td>
 								<td>{shortdaysOfWeek[currentDate.getDay()+6]} {currentDate.getDate()+6}</td> */}
 							</tr>
 							<tr>
-								<td><img class={style.forecasticon} src={`/assets/icons/weather icons/${weathericon}.png`}></img></td>
-								<td><img class={style.forecasticon} src="\assets\icons\weather icons\rainy.png"></img></td>
-								<td><img class={style.forecasticon} src="\assets\icons\weather icons\rainy.png"></img></td>
-								<td><img class={style.forecasticon} src="\assets\icons\weather icons\cloud.png"></img></td>
-								<td><img class={style.forecasticon} src="\assets\icons\weather icons\sun.png"></img></td>
+								<td><img class={style.forecasticon} src={`/assets/icons/weather icons/${this.setWeatherIcon(icons[days[0]])}.png`}></img></td>
+								<td><img class={style.forecasticon} src={`/assets/icons/weather icons/${this.setWeatherIcon(icons[days[1]])}.png`}></img></td>
+								<td><img class={style.forecasticon} src={`/assets/icons/weather icons/${this.setWeatherIcon(icons[days[2]])}.png`}></img></td>
+								<td><img class={style.forecasticon} src={`/assets/icons/weather icons/${this.setWeatherIcon(icons[days[3]])}.png`}></img></td>
+								<td><img class={style.forecasticon} src={`/assets/icons/weather icons/${this.setWeatherIcon(icons[days[4]])}.png`}></img></td>
 							</tr>
 							<tr>
-								<td>{ Math.round(this.state.hi) }°C</td>
-								<td>13°C</td>
-								<td>12°C</td>
-								<td>12°C</td>
-								<td>14°C</td>
+								<td>{Math.round(maxtemps[days[0]])}°C</td>
+								<td>{Math.round(maxtemps[days[1]])}°C</td>
+								<td>{Math.round(maxtemps[days[2]])}°C</td>
+								<td>{Math.round(maxtemps[days[3]])}°C</td>
+								<td>{Math.round(maxtemps[days[4]])}°C</td>
 							</tr>
 							<tr style="color:grey;">
-								<td>{ Math.round(this.state.lo) }°C</td>
-								<td>9°C</td>
-								<td>8°C</td>
-								<td>8°C</td>
-								<td>10°C</td>
+								<td>{Math.round(mintemps[nights[0]])}°C</td>
+								<td>{Math.round(mintemps[nights[1]])}°C</td>
+								<td>{Math.round(mintemps[nights[2]])}°C</td>
+								<td>{Math.round(mintemps[nights[3]])}°C</td>
+								<td>{Math.round(mintemps[nights[4]])}°C</td>
 							</tr>
 						</table>
 					</div>
@@ -336,6 +346,8 @@ export default class Iphone extends Component {
 			</div>
 		);
 	}
+	
+	
 
 	parseResponse = (parsed_json) => {
 		var location = parsed_json['name'];
@@ -350,6 +362,7 @@ export default class Iphone extends Component {
 		var sunrise = parsed_json['sys']['sunrise'];
 		var sunset = parsed_json['sys']['sunset'];
         let icon = parsed_json['weather']['0']['icon'];
+
 
 		// set states for fields so they could be rendered later on
 		this.setState({
@@ -367,6 +380,43 @@ export default class Iphone extends Component {
             ico: icon
 		});      
 	}
+
+	parseResponse2 = (parsed_json) => {
+		
+
+		for(let i=0; i<40; i++){
+			// let current = toString(i);
+			maxtemps.push(parsed_json['list'][i]['main']['temp_max']);
+			mintemps.push(parsed_json['list'][i]['main']['temp_min']);
+			icons.push(parsed_json['list'][i]['weather']['0']['icon']);
+			dates.push(parsed_json['list'][i]['dt_txt']);
+
+
+			// console.log("temp test: ", maxtemps[i], mintemps[i], icons[i], dates[i]);
+			let date = new Date(dates[i]);
+			let time = date.getHours();
+			// console.log(time);
+			if(time == 12){
+				console.log("temp test: ", maxtemps[i], Math.round(mintemps[i]), icons[i], dates[i]);
+				days.push(i);
+				// console.log(days[i]);
+			}else if(time == 0){
+				nights.push(i);
+			}
+			this.setState({
+				// smaxtemps:[maxtemps[days[0]], maxtemps[days[1]], maxtemps[days[2]], maxtemps[days[3]], maxtemps[days[4]]]
+			});
+
+		}
+		
+		console.log(days);
+		console.log(nights);
+		// let temp = parsed_json['list']['0']['main']['temp'];
+		
+		
+
+	}
+
 
 	
 }
