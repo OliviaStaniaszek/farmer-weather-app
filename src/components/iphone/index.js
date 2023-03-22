@@ -44,6 +44,7 @@ export default class Iphone extends Component {
 			success : this.parseResponse,
 			error : function(req, err){ console.log('API call failed ' + err); }
 		})
+		
 		// once the data grabbed, hide the button
 		this.setState({ display: false });
 	}
@@ -135,28 +136,39 @@ export default class Iphone extends Component {
 				</div>
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
-					<h2>{formattedTime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{formattedDate}</h2> {/* current date and time*/}
+					<h2>{formattedTime}&nbsp; - &nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
 						<table class={style.weathertable}>
+
 							<tr>
-								<td style="width:35%;">
-									<img style="margin-left:20%" class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
+							<td style="width:40%;" rowSpan={2}>
+									<img style="margin-left:20%; width:100px;" class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
 								</td>
-								<td>
+								<td >
 									<h1 class={ style.temperature }>{ Math.round(this.state.temp) }°C</h1>
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<div style="padding-top:5%; text-align:left;" class={ style.humidity }><b>Humidity</b>: { this.state.hum }%</div>
-								</td>
-								<td rowSpan="2" style="border: height:3%;">
-									<div class={ style.conditions }>{ this.state.cond }</div>
+								<td style="border: height:3%;">
+									<div style="font-size:30px" class={ style.conditions }>{ this.state.cond }</div>
 								</td>
 							</tr>
+							
+						</table>
+					</div>
+					<br></br>
+					<div class={style.innerbox}>
+						<table class={style.weathertable}>
 							<tr>
-							<td>
-									<div style="text-align:left;" class={ style.wind }><b>Wind</b>: { Math.round(this.state.win * 10) / 10 }mph</div>
+								<td style="width:50%">
+									<div style="padding-top:15%; text-align:left; font-size:30px" class={ style.humidity }>
+										<img style="width:60px;" src="\assets\icons\humidity.png">
+									</img><div style="display:inline; position:relative; bottom:10pt;">{ this.state.hum }%</div></div>
+								</td>
+								<td>
+									<div style="text-align:left; font-size:30px" class={ style.wind }>
+										<img style="width:60px;" src="\assets\icons\wind flag.png"></img> 
+										<div style="display:inline; position:relative; bottom:10pt;"> { Math.round(this.state.win * 10) / 10 }mph</div></div>
 								</td>
 							</tr>
 						</table>
@@ -174,22 +186,14 @@ export default class Iphone extends Component {
 				<div class={style.greenbox} flex-container>
 					<h2>Tasks</h2>
 					<div class={style.innerbox}>
-						<p class={style.innerboxtext}>Field 3 ready to harvest</p>
+						<ol class={style.innerboxtext} style=" list-style-position: inside; padding:0; margin:0;">
+							<li>Irrigate field 1</li>
+							<li>Milk cows</li>
+							<li>Order barley seeds</li>
+						</ol>
 					</div>
 				</div>
 
-				{/* weekly overview box */}
-				<div class={style.greybox} flex-container >
-					<h2>To Do</h2>
-					<div class={style.innerbox}>
-						<p class={style.innerboxtext}>1. Irrigate lettuce</p>
-						<p>2. Milk the cows</p>
-						<p>3. Prepare compost heap</p>
-					
-					</div>
-					{/* <img class={style.chart} src='\assets\icons\week-chart.jpg' height="120" style="width: 380px; position:relative; left: -4px; top:-4px"></img> */}
-
-				</div>
 
 				<div class={style.bufferbox}>
 					box
@@ -229,7 +233,7 @@ export default class Iphone extends Component {
 				</div>
 				<div class={ style.details }></div>
 				<div class= { style_iphone.container }> 
-					// { this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
+					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
 				
 			</div>
 		);
