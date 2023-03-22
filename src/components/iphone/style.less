@@ -3,23 +3,20 @@
 .container { 
     display: flex;  // see https://www.w3schools.com/css/css3_flexbox.asp
     flex-direction: column; //stacks elements vertically
-    // background-image: url('../../assets/backgrounds/clear-iphone.jpg');
     background-color: white;
-    width: 414px;
-    height: 736px;
-    // text-align: center;
+    width: @width;
+    height: @height;
     margin: 0 auto;
+	font-family:@font;
 }
 
 
 .headerbar{
-    // border: lightgray 1pt solid;
     margin: 0;
     width: 100%;
 	height: 10%;
 	padding: 4%;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+	box-shadow: @shadow;
 }
 
 .details {
@@ -33,7 +30,6 @@
 
  
 // weather box
-	//Previous icon
 	.weathericon{
 		width:80px;
 		display: inline;
@@ -48,9 +44,9 @@
 		margin-top: 0;
 		font-size: 4.5em;
 		font-weight: 300;
-		// letter-spacing: -12px;
 		color: black;
 	}
+
 	.conditions {
 		flex: 1;
 		font-size: 2em;
@@ -87,17 +83,16 @@
 		background-color: none;
 
 	}
+
 	.weathertable p{
 		text-align: center;
 		font-size: 18px;
-		// margin-top: 10%;
 		margin-bottom: 0;
 	}
 
 	.weathertable td{
 		padding: 1%;
 		text-align: center;
-		// border: 2pt solid @blue;
 
 	}
 
@@ -127,43 +122,40 @@
     font-size: 20px;
 }
 
-
 // colour boxes
 	.bluebox{
 		background-color: @blue;
 		margin: 2%;
 		flex-direction: row;
 		padding: 3%;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		box-shadow: @shadow;
 
 	}
+
 	.redbox{
 		background-color: @red;
 		margin: 2%;
 		flex-direction: row;
 		padding: 3%;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		box-shadow: @shadow;
 
 	}
+
 	.greenbox{
 		background-color: @green;
 		margin: 2%;
 		flex-direction: row;
 		padding: 3%;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		box-shadow: @shadow;
 
 	}
+
 	.greybox{
 		background-color: @grey;
 		margin: 2%;
 		flex-direction: row;
 		padding: 3%;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+		box-shadow: @shadow;
 	}
 
 	.orangebox{
@@ -171,9 +163,7 @@
 		margin: 2%;
 		flex-direction: row;
 		padding: 3%;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+		box-shadow: @shadow;
 	}
 
 	.yellowbox{
@@ -181,9 +171,7 @@
 		margin: 2%;
 		flex-direction: row;
 		padding: 3%;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+		box-shadow: @shadow;
 	}
 
 
@@ -193,14 +181,13 @@
 		background-color: white;
 		position: fixed;
 		bottom: 0;
-		width: 414px;
+		width: @width;
 		height: 10.5%;
 		padding: 0%;
 		display: flex;
 		justify-content: space-between;
 		text-align: center;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+		box-shadow: @shadow;
 	}
 
 	.navbarimg{
@@ -211,7 +198,6 @@
 
 	.navbarelement:hover{
 		background-color: @yellow;
-		// border-radius: 50px;
 	}
 
 	.navbarelement{
@@ -221,12 +207,9 @@
 	}
 
 	.navbarelement p{
-		// display: block;
 		color: black;
 		text-align: center;
-		// padding: 14px 10px;
 		text-decoration: none;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 		position: relative;
 		bottom: 23px;
 	}
@@ -237,20 +220,19 @@
 		color: white;
 	}
 
+// crop table
+	.croptable{
+		border-collapse: collapse;
+		width: 100%;
+		font-size: 20px;
+	}
 
-.croptable{
-	border-collapse: collapse;
-  	width: 100%;
-	font-size: 20px;
-}
+	.croptable th,td{
+		text-align: left;
+		padding: 1%;
+	}
 
-.croptable th,td{
-	// background-color: @grey;
-	text-align: left;
-	padding: 1%;
-}
-
-.croptable tr:nth-child(even) {background-color: #f2f2f2;}
+	.croptable tr:nth-child(even) {background-color: #f2f2f2;}
 
 
 h1{

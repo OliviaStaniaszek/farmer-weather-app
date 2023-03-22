@@ -25,16 +25,6 @@ export default class Iphone extends Component {
 
 	// a call to fetch weather data via wunderground
 	fetchWeatherData = () => {
-		//url Sanchia got 1st attemp online
-		// http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=cb932829eacb6a0e9ee4f38bfbf112ed
-
-		//url Sanchia got after creating an account, gives more accurate weather
-		//http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11
-
-		// Previous url Jane gave
-		//http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=cf17e23b1d108b29a4d738d2084baf5
-
-
 		
 		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
 		var url = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=94389e8a8d91186a44a860ea125a4e11";
@@ -123,11 +113,7 @@ export default class Iphone extends Component {
 		console.log(weathericon);
 
 
-		// display all weather data
 		return (
-			// <div class={ style.container }>
-			// 	<div class={ style.header }>
-			
 			<div class={ style.container }> 
 				<div class={style.headerbar}> 
 					<h1>Farm 39</h1> {/* change text based on current page */}
@@ -201,40 +187,28 @@ export default class Iphone extends Component {
 				</div>
 
 				<nav>
-				<div class={style.navbar} flex-box-container> 
-					<div class={style.navbarelement}>
-						<Link activeClassName="active" href="/weather">
-							<img class={style.navbarimg} src='\assets\icons\weather outline.png'></img>
-							<p>Weather</p>
-						</Link>
+					<div class={style.navbar} flex-box-container> 
+						<div class={style.navbarelement}>
+							<Link activeClassName="active" href="/weather">
+								<img class={style.navbarimg} src='\assets\icons\weather outline.png'></img>
+								<p>Weather</p>
+							</Link>
+						</div>
+						<div class={style.navbarelement}>
+							<Link activeClassName="active" href="/" >
+								<img class={style.navbarimg} src='\assets\icons\farm house outline.png'></img>
+								<p>Home</p>
+							</Link>
+						</div>
+						<div class={style.navbarelement}>
+							<Link activeClassName="active" href="/crops">
+								<img class={style.navbarimg} src='\assets\icons\crops outline.png'></img>
+								<p>Crops</p>
+							</Link>
+						</div>
 					</div>
-					<div class={style.navbarelement}>
-						<Link activeClassName="active" href="/" >
-							<img class={style.navbarimg} src='\assets\icons\farm house outline.png'></img>
-							<p>Home</p>
-						</Link>
-					</div>
-					<div class={style.navbarelement}>
-						<Link activeClassName="active" href="/crops">
-							<img class={style.navbarimg} src='\assets\icons\crops outline.png'></img>
-							<p>Crops</p>
-						</Link>
-					</div>
-				</div>
 				</nav>
-				
-	
 
-				{/* display weather button */}
-				<div class={ style.header }> 
-					{/* <div class={ style.city }>{ this.state.locate }</div>
-					<div class={ style.conditions }>{ this.state.cond }</div>
-					<span class={ tempStyles }>{ this.state.temp }</span> */}
-				</div>
-				<div class={ style.details }></div>
-				<div class= { style_iphone.container }> 
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
-				
 			</div>
 		);
 	}

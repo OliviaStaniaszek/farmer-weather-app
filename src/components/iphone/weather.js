@@ -247,7 +247,7 @@ export default class Iphone extends Component {
 
                     <div class={style.innerbox}>
                         <table class={style.weathertable}>
-                        <tr>
+                        	<tr>
                                 <td>
                                     <p>High</p>
                                 </td>
@@ -291,11 +291,8 @@ export default class Iphone extends Component {
                                     <h3>{ sTime }</h3>
                                 </td>
                             </tr>
-
                         </table>
                     </div>
-
-					
 
 				</div>
 				
@@ -305,46 +302,35 @@ export default class Iphone extends Component {
 				</div>
 				
 				<nav>
-				<div class={style.navbar} flex-box-container> 
-					<div class={style.navbarelement}>
-						<Link activeClassName="active" href="/weather">
-							<img class={style.navbarimg} src='\assets\icons\weather outline.png'></img>
-							<p>Weather</p>
-						</Link>
+					<div class={style.navbar} flex-box-container> 
+						<div class={style.navbarelement}>
+							<Link activeClassName="active" href="/weather">
+								<img class={style.navbarimg} src='\assets\icons\weather outline.png'></img>
+								<p>Weather</p>
+							</Link>
+						</div>
+						<div class={style.navbarelement}>
+							<Link activeClassName="active" href="/" >
+								<img class={style.navbarimg} src='\assets\icons\farm house outline.png'></img>
+								<p>Home</p>
+							</Link>
+						</div>
+						<div class={style.navbarelement}>
+							<Link activeClassName="active" href="/crops">
+								<img class={style.navbarimg} src='\assets\icons\crops outline.png'></img>
+								<p>Crops</p>
+							</Link>
+						</div>
 					</div>
-					<div class={style.navbarelement}>
-						<Link activeClassName="active" href="/" >
-							<img class={style.navbarimg} src='\assets\icons\farm house outline.png'></img>
-							<p>Home</p>
-						</Link>
-					</div>
-					<div class={style.navbarelement}>
-						<Link activeClassName="active" href="/crops">
-							<img class={style.navbarimg} src='\assets\icons\crops outline.png'></img>
-							<p>Crops</p>
-						</Link>
-					</div>
-				</div>
 				</nav>
 				
 	
-
-				{/* display weather button */}
-				<div class={ style.header }> 
-					{/* <div class={ style.city }>{ this.state.locate }</div>
-					<div class={ style.conditions }>{ this.state.cond }</div>
-					<span class={ tempStyles }>{ this.state.temp }</span> */}
-				</div>
-				<div class={ style.details }></div>
-				<div class= { style_iphone.container }> 
-					{ this.state.display ? <Button class={ style_iphone.button } clickFunction={ this.fetchWeatherData }/ > : null }				</div>
-				
-			</div>
+			</div>	
 		);
 	}
 	
 	
-
+	// live weather
 	parseResponse = (parsed_json) => {
 		var location = parsed_json['name'];
 		var temp_c = parsed_json['main']['temp'];
@@ -377,42 +363,25 @@ export default class Iphone extends Component {
 		});      
 	}
 
+	//5 day forecast
 	parseResponse2 = (parsed_json) => {
-		
-
 		for(let i=0; i<40; i++){
-			// let current = toString(i);
+			//adds data to arrays
 			maxtemps.push(parsed_json['list'][i]['main']['temp_max']);
 			mintemps.push(parsed_json['list'][i]['main']['temp_min']);
 			icons.push(parsed_json['list'][i]['weather']['0']['icon']);
 			dates.push(parsed_json['list'][i]['dt_txt']);
 
-
-			// console.log("temp test: ", maxtemps[i], mintemps[i], icons[i], dates[i]);
 			let date = new Date(dates[i]);
 			let time = date.getHours();
-			// console.log(time);
-			if(time == 12){
-				console.log("temp test: ", maxtemps[i], Math.round(mintemps[i]), icons[i], dates[i]);
+			if(time == 12){ //gets all fields at 12 noon
 				days.push(i);
-				// console.log(days[i]);
-			}else if(time == 0){
+			}else if(time == 0){ //gets all fields at midnight
 				nights.push(i);
 			}
 			this.setState({
-				// smaxtemps:[maxtemps[days[0]], maxtemps[days[1]], maxtemps[days[2]], maxtemps[days[3]], maxtemps[days[4]]]
 			});
 
 		}
-		
-		console.log(days);
-		console.log(nights);
-		// let temp = parsed_json['list']['0']['main']['temp'];
-		
-		
-
 	}
-
-
-	
 }
