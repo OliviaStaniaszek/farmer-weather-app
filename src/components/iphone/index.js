@@ -4,21 +4,18 @@ import { Link } from 'preact-router/match';
 
 // import stylesheets for ipad & button
 import style from './style';
-import style_iphone from '../button/style_iphone';
+
 // import jquery for API calls
 import $ from 'jquery';
-// import the Button component
-import Button from '../button';
-
 
 export default class Iphone extends Component {
-//var Iphone = React.createClass({
-
 	// a constructor with initial set states
 	constructor(props){
 		super(props);
+
 		// temperature state
 		this.state.temp = "";
+
 		// button display state
 		this.setState({ display: true });
 	}
@@ -38,15 +35,13 @@ export default class Iphone extends Component {
 		// once the data grabbed, hide the button
 		this.setState({ display: false });
 	}
-
-
-	// the main render method for the iphone component
 	
 	//displays weather data
 	componentWillMount() {
 		this.fetchWeatherData ();
 	}
 
+	// sets icon based on icon value form api
 	setWeatherIcon() {
 		let iconcode = this.state.ico;
 		console.log(iconcode);
@@ -78,7 +73,7 @@ export default class Iphone extends Component {
 		}
 	}
 	  
-
+	// the main render method for the iphone component
 	render() {
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
@@ -90,7 +85,6 @@ export default class Iphone extends Component {
 		const dayOfMonth = currentDate.getDate();
 		const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		const monthName = monthNames[currentDate.getMonth()];
-		//const year = currentDate.getFullYear();
 		const suffixes = ['th', 'st', 'nd', 'rd'];
 		const daySuffix = suffixes[(dayOfMonth-20)%10] || suffixes[dayOfMonth] || suffixes[0];
 		const formattedDate = `${dayOfWeek} ${dayOfMonth}${daySuffix} ${monthName}`;
@@ -100,34 +94,28 @@ export default class Iphone extends Component {
 		const minutes = currentDate.getMinutes();
 		const formattedTime = `${hours < 10 ? '0' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 
-		//This sets 12 hour time
-		// const hours = currentDate.getHours() % 12 || 12;
-		// const minutes = currentDate.getMinutes();
-		// const meridian = currentDate.getHours() >= 12 ? 'p.m.' : 'a.m.';
-		// const formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${meridian}`;
-
-		//const temp = data.main.temp;
-
 		//for setting weather icon dynamically
 		let weathericon = this.setWeatherIcon();
 		console.log(weathericon);
 
-
+		// page content
 		return (
 			<div class={ style.container }> 
+				{/* header bar */}
 				<div class={style.headerbar}> 
-					<h1>Farm 39</h1> {/* change text based on current page */}
+					<h1>Farm 39</h1>
 					{/* Farm logo */}
 					<img src="\assets\icons\farm house outline.png" height="50" style="max-width: 65px; position:relative; left: 330px; top:-45px"/>
 				</div>
+
 				{/* weather box */}
 				<div class={style.bluebox} flex-container>
 					<h2>{formattedTime}&nbsp; - &nbsp;{formattedDate}</h2> {/* current date and time*/}
 					<div class={style.innerbox}>
 						<table class={style.weathertable}>
-
 							<tr>
-							<td style="width:40%;" rowSpan={2}>
+								{/* weather icon and temp */}
+								<td style="width:40%;" rowSpan={2}>
 									<img style="margin-left:20%; width:100px;" class = {style.weathericon} src={`/assets/icons/weather icons/${weathericon}.png`} ></img>
 								</td>
 								<td >
@@ -135,15 +123,18 @@ export default class Iphone extends Component {
 								</td>
 							</tr>
 							<tr>
+								{/* conditions */}
 								<td style="border: height:3%;">
 									<div style="font-size:30px" class={ style.conditions }>{ this.state.cond }</div>
 								</td>
 							</tr>
-							
 						</table>
 					</div>
+
 					<br></br>
+
 					<div class={style.innerbox}>
+						{/* humidity and wind */}
 						<table class={style.weathertable}>
 							<tr>
 								<td style="width:50%">
@@ -160,6 +151,7 @@ export default class Iphone extends Component {
 						</table>
 					</div>
 				</div>
+
 				{/* alert box */}
 				<div class={style.redbox} flex-container>
 					<h2>! Alert</h2>
@@ -180,12 +172,12 @@ export default class Iphone extends Component {
 					</div>
 				</div>
 
-
 				<div class={style.bufferbox}>
 					box
 					{/* adds blank space at the end so stuff isnt hidden behind navbar */}
 				</div>
 
+				{/* navbar */}
 				<nav>
 					<div class={style.navbar} flex-box-container> 
 						<div class={style.navbarelement}>
@@ -208,11 +200,11 @@ export default class Iphone extends Component {
 						</div>
 					</div>
 				</nav>
-
 			</div>
 		);
 	}
 
+	// fetches data from open weather API and sets to states
 	parseResponse = (parsed_json) => {
 		let location = parsed_json['name'];
 		let temp_c = parsed_json['main']['temp'];
